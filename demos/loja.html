@@ -381,16 +381,18 @@ const HUB = {"nome": "Ateliê Lis", "titulo": "Ateliê Lis · Moda feminina", "s
   }
   $("#status").innerHTML = aberto() ? `<i class="dot"></i>Aberto agora` : `<i class="dot" style="background:#f59e0b;animation:none"></i>Fechado agora`;
   if (mesa) { $("#mesa").hidden = false; $("#mesa").innerHTML = ic("pin") + "Você está na Mesa " + esc(mesa); }
+  /* Destaques curtos do negócio, ao lado do status (ex.: "Do 36 ao 52") */
+  if (Array.isArray(HUB.destaques)) $(".chips").insertAdjacentHTML("beforeend", HUB.destaques.map(t => `<span class="chip">${esc(t)}</span>`).join(""));
 
   /* Botões */
   const P = HUB.principal || {};
   const acoes = [];
   if (P.tipo) acoes.push(`<a class="btn main" data-ev="abriu_${P.tipo}" href="${P.tipo === "link" ? esc(P.link || "#") : "#ver"}" data-principal ${P.tipo === "link" && P.link ? 'target="_blank" rel="noopener noreferrer"' : ""}>${ic(P.icone || "livro")}<span class="tx">${esc(P.rotulo)}${P.sub ? `<small>${esc(P.sub)}</small>` : ""}</span><span class="seta">${ic("chev")}</span></a>`);
   (HUB.acoes || []).forEach((a, k) => {
-    let url = a.url || "", icn = { google: "star", whatsapp: "wa", instagram: "ig", mapa: "pin", link: "ext" }[a.tipo] || "ext";
+    let url = a.url || "", icn = a.icone || { google: "star", whatsapp: "wa", instagram: "ig", mapa: "pin", link: "ext" }[a.tipo] || "ext";
     if (a.tipo === "whatsapp") url = wa(a.mensagem || (mesa ? `Olá! Estou na Mesa ${mesa} do ${HUB.nome}.` : `Olá, ${HUB.nome}!`));
     const fim = a.tipo === "google" ? `<span class="estrelas" aria-hidden="true">★★★★★</span>` : `<span class="seta">${ic("ext")}</span>`;
-    acoes.push(`<a class="btn ${a.tipo === "whatsapp" ? "wa" : ""}" data-ev="clique_${a.tipo}" style="animation-delay:${(k + 1) * 0.08}s" ${url ? `href="${esc(url)}" target="_blank" rel="noopener noreferrer"` : `href="#" data-vazio="${esc(a.aviso || "")}"`}>${ic(icn)}<span class="tx">${esc(a.rotulo)}${a.sub ? `<small>${esc(a.sub)}</small>` : ""}</span>${fim}</a>`);
+    acoes.push(`<a class="btn ${a.tipo === "whatsapp" || icn === "wa" ? "wa" : ""}" data-ev="clique_${a.tipo}" style="animation-delay:${(k + 1) * 0.08}s" ${url ? `href="${esc(url)}" target="_blank" rel="noopener noreferrer"` : `href="#" data-vazio="${esc(a.aviso || "")}"`}>${ic(icn)}<span class="tx">${esc(a.rotulo)}${a.sub ? `<small>${esc(a.sub)}</small>` : ""}</span>${fim}</a>`);
   });
   $("#acoes").innerHTML = acoes.join("");
   $("#acoes").addEventListener("click", e => {

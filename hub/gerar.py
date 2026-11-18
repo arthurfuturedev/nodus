@@ -142,6 +142,34 @@ hubs['loja'] = {
   'catalogo': {'tamanhos': 'P · M · G · GG', 'itens': [{'n': p[0], 'cat': p[1], 'p': p[2], 'd': p[3], 'arte': D['sp'][p[4]], **({'tag': 'Mais vendido'} if i == 0 else {})} for i, p in enumerate(D['loja'])]},
 }
 
+
+# ── Ateliê da Moda (cliente real · Mogi Guaçu) ──
+_wa_atelie = '5519981618772'
+hubs['atelie'] = {
+  'nome': 'Ateliê da Moda', 'titulo': 'Ateliê da Moda · Mogi Guaçu', 'sub': 'Moda que valoriza mulheres reais',
+  'fontes': 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap',
+  'disp': '"Playfair Display",Georgia,serif',
+  'cores': {'bg': '#160a0d', 'fg': '#fbf1ee', 'mut': 'rgba(251,241,238,.68)', 'acc': '#e3343b', 'acc2': '#a81c2a', 'accfg': '#ffffff', 'line': 'rgba(251,241,238,.17)'},
+  'logo': {'src': uri('atelie-logo.jpg', 'image/jpeg'), 'forma': 'livre', 'largura': '9.6rem', 'temNome': True},
+  'css': """
+#logo.livre img{border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(227,52,59,.6),0 0 0 9px rgba(227,52,59,.14),0 22px 50px rgba(0,0,0,.55)}
+
+.hero .tag{text-transform:none;font:italic 500 1.22rem/1.35 "Playfair Display",Georgia,serif;letter-spacing:.01em;color:#fbf1ee;opacity:.92}""",
+  'fundo': {'src': uri('atelie-fundo.jpg', 'image/jpeg'), 'blur': 6, 'pos': '50% 30%',
+            'veu': 'radial-gradient(110% 60% at 50% 8%,rgba(22,10,13,.15),rgba(22,10,13,.62) 70%),linear-gradient(180deg,rgba(60,8,16,.35),rgba(22,10,13,.72) 42%,rgba(18,8,10,.95))'},
+  'status': {'expediente': {1: [9.5, 18], 2: [9.5, 18], 3: [9.5, 18], 4: [9.5, 18], 5: [9.5, 18], 6: [9.5, 13]}},
+  'destaques': ['Do 36 ao 52'],
+  'whatsapp': _wa_atelie, 'mesa': False,
+  'principal': {'tipo': 'link', 'rotulo': 'Comprar pelo WhatsApp', 'sub': 'Há 20 anos vestindo histórias', 'icone': 'wa',
+                'link': 'https://wa.me/' + _wa_atelie + '?text=' + __import__('urllib.parse').parse.quote('Olá, Ateliê da Moda! Vim pelo hub e gostaria de ver as novidades.')},
+  'acoes': [
+    {'tipo': 'google', 'rotulo': 'Avalie no Google', 'sub': 'Conte como foi sua visita', 'url': 'https://search.google.com/local/writereview?placeid=ChIJ2W7yvNVXyJQRFZlr4FZSDHw'},
+    {'tipo': 'instagram', 'rotulo': 'Instagram', 'sub': '@loja_ateliemoda · looks e provador', 'url': 'https://www.instagram.com/loja_ateliemoda/'},
+    {'tipo': 'link', 'icone': 'wa', 'rotulo': 'Grupo VIP no WhatsApp', 'sub': 'Promoções em primeira mão', 'url': 'https://chat.whatsapp.com/KdxUSz1g3TC45iu76vsKUJ'},
+  ],
+  'info': {'endereco': 'R. Sérgio Sínico, 35 · Jd. Guaçu Mirim III, Mogi Guaçu', 'horario': 'Seg a sex 09h30 às 18h · Sáb 09h30 às 13h',
+           'mapa': 'https://www.google.com/maps/search/?api=1&query=Ateli%C3%AA+da+Moda+R.+S%C3%A9rgio+S%C3%ADnico+35+Mogi+Gua%C3%A7u'},
+}
 exec(open(H + '/ficticias.py', encoding='utf-8').read())
 
 # ── Relatório de acessos ──────────────────────────────────────────────
