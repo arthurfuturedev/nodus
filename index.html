@@ -217,7 +217,7 @@ p{margin:0}
 .cor{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:999px;border:1px solid var(--linha);background:var(--painel);color:var(--mudo);font:600 .9rem var(--sans);cursor:pointer}
 .cor i{width:.95rem;height:.95rem;border-radius:50%;background:var(--c);box-shadow:0 0 0 1px rgba(255,255,255,.35)}
 .cor[aria-pressed="true"]{color:var(--tinta);background:var(--texto);border-color:var(--texto)}
-.foto-placa{width:min(21rem,100%);aspect-ratio:1;border-radius:1.4rem;overflow:hidden;background:#1a1d24;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+.foto-placa{width:min(22rem,100%);aspect-ratio:1;border-radius:1rem;overflow:hidden;background:#fff;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
 .foto-placa img{transition:opacity .25s}
 .foto-placa img{width:100%;height:100%;object-fit:cover;display:block}
 .pg{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:.8rem;padding:2rem 1.6rem 1.6rem;text-align:center;color:#fff;background:var(--fundo);border:1px solid rgba(255,255,255,.14);border-radius:inherit;transition:background .35s}
@@ -232,7 +232,13 @@ p{margin:0}
 .placa-g .lista svg{color:var(--ok)}
 .placa-g .preco-p{margin-top:1.6rem;font-size:1.05rem}
 .placa-g .preco-p b{white-space:nowrap;font-size:1.6rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-@media(max-width:860px){.placa-g .miolo{grid-template-columns:1fr;gap:2.5rem}.vitrine{order:-1}}
+.placa-g .mesa-b{margin-top:4.5rem;padding-top:4rem;border-top:1px solid var(--linha);grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+.foto-mesa{margin:0;border-radius:.9rem;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.08);background:#fffdf0}
+.foto-mesa img{width:100%;height:auto;display:block}
+.mesa-b h3{font-size:clamp(1.4rem,3vw,1.9rem);margin-top:.5rem;letter-spacing:-.02em}
+.mesa-b p{color:var(--mudo);margin-top:.8rem;font-size:1.02rem;max-width:32rem}
+.mesa-b .preco-m{color:var(--texto);font-weight:600}
+@media(max-width:860px){.placa-g .miolo{grid-template-columns:1fr;gap:2.5rem}.vitrine{order:-1}.placa-g .mesa-b{margin-top:3rem;padding-top:3rem;gap:1.8rem}}
 
 .rodape{border-top:1px solid var(--linha);padding-block:2.2rem calc(2.2rem + env(safe-area-inset-bottom,0px));color:var(--mudo);font-size:.88rem}
 .rodape .miolo{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between}
@@ -330,7 +336,7 @@ p{margin:0}
         <ul class="lista">
           <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Chip NFC e QR code na mesma placa, funciona em qualquer celular</span></li>
           <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Abre direto a avaliação do seu perfil, sem procurar no Google</span></li>
-          <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Disponível em azul e em preto</span></li>
+          <li><svg aria-hidden="true"><use href="#ok"/></svg><span>10 x 10 cm, disponível em azul e em preto</span></li>
           <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Pode ser comprada junto com o hub ou sozinha</span></li>
         </ul>
         <p class="preco-p"><b>R$ 79,90</b> cada · <b>2 por R$ 139,90</b></p>
@@ -339,6 +345,16 @@ p{margin:0}
       <div class="vitrine">
         <div class="foto-placa" id="fotoPlaca"></div>
         <div class="cores" role="group" aria-label="Cor da placa" id="cores"></div>
+      </div>
+    </div>
+    <div class="miolo mesa-b">
+      <figure class="foto-mesa"><img src="img/plaquinha-mesa.jpg" alt="Arte da plaquinha de mesa: QR code à esquerda, espaço para a logo do estabelecimento e atalhos para Menu, Presentes, Wi-Fi e Feedback" loading="lazy" width="942" height="466"></figure>
+      <div>
+        <span class="rot">Plaquinha de mesa · 5 x 10 cm</span>
+        <h3>Uma em cada mesa, com a sua logo</h3>
+        <p>O cliente lê o código e abre o hub da casa já com o número da mesa: cardápio, Wi-Fi e opinião sem precisar chamar o garçom. A arte leva a logo e as cores do seu negócio.</p>
+        <p class="preco-m">Valor por quantidade, combinado depois do pedido.</p>
+        <div class="acoes"><a class="btn btn-s" href="#comprar" id="addMesa">Quero para as mesas</a></div>
       </div>
     </div>
   </section>
@@ -582,6 +598,7 @@ const DEMOS = [
   $("#cExtras").innerHTML = EXTRAS.map(x => `<div class="extra"><div><b>${esc(x.nome)}</b><small>${esc(x.desc)}</small><small class="v">${esc(x.rotulo)}</small></div><div class="step"><button type="button" data-x="${x.id}" data-d="-1" aria-label="Menos ${esc(x.nome)}">−</button><output id="q-${x.id}">0</output><button type="button" data-x="${x.id}" data-d="1" aria-label="Mais ${esc(x.nome)}">+</button></div></div>`).join("");
   $("#cExtras").addEventListener("click", e => { const b = e.target.closest("[data-x]"); if (!b) return; qtd[b.dataset.x] = Math.max(0, Math.min(99, qtd[b.dataset.x] + +b.dataset.d)); calcular(); });
   $("#addPlaca").addEventListener("click", () => { if (!qtd.google) { qtd.google = 1; calcular(); } });
+  $("#addMesa").addEventListener("click", () => { if (!qtd.plaquinha) { qtd.plaquinha = 1; calcular(); } });
   document.querySelectorAll("[data-plano]").forEach(a => a.addEventListener("click", () => { const r = document.querySelector(`input[name=plano][value="${a.dataset.plano}"]`); if (r) { r.checked = true; calcular(); } }));
   const cf = $("#cfg");
   cf.addEventListener("input", calcular); cf.addEventListener("change", calcular); cf.addEventListener("submit", e => e.preventDefault());
