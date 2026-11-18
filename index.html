@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B0E14">
+<title>Nodus Hub Digital</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Hubs digitais com NFC para restaurantes, bares, barbearias, oficinas e lojas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+/* Layout: faixas largas em tinta escura; o celular com a demo ao vivo é o centro de cada seção. */
+:root{
+  --tinta:#0B0E14; --painel:#131823; --painel2:#1A2130; --linha:rgba(226,232,245,.1);
+  --texto:#ECEFF5; --mudo:#98A2B5; --sinal:#A99CFF; --sinal2:#6FE3EE; --ok:#4ADE95;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{background:var(--tinta);color:var(--texto);font:400 1rem/1.6 var(--sans);font-optical-sizing:auto;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--tinta)}
+a{color:inherit}
+h1,h2,h3{font-weight:750;letter-spacing:-.025em;line-height:1.08;text-wrap:balance;margin:0}
+p{margin:0}
+.faixa{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.miolo{max-width:72rem;margin:0 auto}
+.sec{padding-block:5.5rem}
+.sec-h{max-width:40rem;margin-bottom:2.75rem}
+.sec-h h2{font-size:clamp(1.9rem,4.2vw,2.9rem)}
+.sec-h p{color:var(--mudo);margin-top:.9rem;font-size:1.08rem}
+.rot{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sinal);margin-bottom:.9rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:3rem;padding:.8rem 1.35rem;border-radius:999px;font-weight:650;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .2s,border-color .2s;font-family:inherit}
+.btn:active{transform:scale(.97)}
+.btn-p{background:var(--texto);color:var(--tinta)}
+.btn-p:hover{background:#fff}
+.btn-s{border-color:var(--linha);color:var(--texto);background:rgba(255,255,255,.03)}
+.btn-s:hover{border-color:rgba(169,156,255,.55)}
+.btn svg{width:1.15rem;height:1.15rem;flex:none}
+:focus-visible{outline:2px solid var(--sinal);outline-offset:3px}
+
+/* Topo */
+.topo{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(11,14,20,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--linha)}
+.topo .miolo{display:flex;align-items:center;gap:1.5rem;height:4rem}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-weight:800;letter-spacing:.14em;font-size:1.05rem}
+.marca svg{width:2rem;height:2rem}
+.menu{display:flex;gap:1.6rem;margin-left:auto;font-size:.92rem;color:var(--mudo)}
+.menu a{text-decoration:none}.menu a:hover{color:var(--texto)}
+.topo .btn{min-height:2.5rem;padding:.5rem 1rem;font-size:.88rem}
+@media(max-width:760px){.menu{display:none}.topo .btn{margin-left:auto}}
+
+/* Abertura */
+.abre{padding-block:4.5rem 5rem;position:relative;overflow:hidden}
+.abre:before{content:"";position:absolute;inset:-20% -10% auto auto;width:46rem;height:46rem;background:radial-gradient(closest-side,rgba(169,156,255,.18),transparent);pointer-events:none}
+.abre .miolo{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:3rem;align-items:center;position:relative}
+.abre h1{font-size:clamp(2.6rem,6.4vw,4.6rem);letter-spacing:-.04em}
+.abre h1 span{display:block;color:transparent;background:linear-gradient(92deg,var(--sinal),var(--sinal2));-webkit-background-clip:text;background-clip:text}
+.abre .lead{margin-top:1.4rem;font-size:1.15rem;color:var(--mudo);max-width:34rem}
+.acoes{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.nichos{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2.2rem;font-size:.85rem;color:var(--mudo)}
+.nichos span{padding:.3rem .75rem;border:1px solid var(--linha);border-radius:999px}
+@media(max-width:900px){.abre .miolo{grid-template-columns:1fr}.palco{min-height:0}}
+
+/* Palco: plaquinha + celular */
+.palco{position:relative;display:flex;justify-content:center;align-items:flex-end;gap:0;min-height:34rem}
+.placa{position:absolute;left:max(0px,calc(50% - 15.5rem));bottom:1.2rem;width:9.5rem;z-index:1}
+.placa .acr{aspect-ratio:3/4;border-radius:.9rem;background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 20px 40px rgba(0,0,0,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;padding:.8rem;text-align:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.placa .acr svg{width:3rem;height:3rem}
+.placa .acr b{font-size:.62rem;letter-spacing:.16em}
+.placa .acr small{font-size:.66rem;color:var(--mudo);line-height:1.3}
+.placa .base{height:.9rem;margin:-.2rem .6rem 0;border-radius:0 0 .5rem .5rem;background:linear-gradient(180deg,#2a3242,#141922)}
+.ondas{position:absolute;left:calc(50% - 7.2rem);bottom:9.5rem;width:4rem;height:4rem;z-index:2;pointer-events:none}
+.ondas i{position:absolute;inset:0;border-radius:50%;border:2px solid var(--sinal2);opacity:0;animation:onda 2.4s ease-out infinite}
+.ondas i:nth-child(2){animation-delay:.8s}.ondas i:nth-child(3){animation-delay:1.6s}
+@keyframes onda{0%{transform:scale(.3);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+@media(max-width:520px){.placa{display:none}.ondas{display:none}}
+
+.cel{position:relative;width:19.5rem;max-width:100%;aspect-ratio:9/19;border-radius:2.9rem;padding:.65rem;background:linear-gradient(145deg,#2d3444,#0e1118);box-shadow:0 0 0 1px rgba(255,255,255,.08),0 40px 80px rgba(0,0,0,.55),0 0 90px rgba(169,156,255,.12)}
+.cel .tela{position:relative;width:100%;height:100%;border-radius:2.3rem;overflow:hidden;background:#000}
+.cel .tela:before{content:"";position:absolute;top:.55rem;left:50%;transform:translateX(-50%);width:5.5rem;height:1.45rem;border-radius:1rem;background:#000;z-index:3}
+.cel iframe{position:absolute;top:0;left:0;width:375px;height:812px;border:0;background:#000;transform-origin:0 0}
+.abre .cel{margin-left:6rem}
+@media(max-width:520px){.abre .cel{margin-left:0;width:17.5rem}}
+
+/* Como funciona */
+.passos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;list-style:none;padding:0;margin:0;counter-reset:p}
+.passos li{counter-increment:p;padding:1.6rem;border-radius:1.25rem;background:var(--painel);border:1px solid var(--linha)}
+.passos li:before{content:counter(p);display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;border:1px solid rgba(169,156,255,.5);color:var(--sinal);font-weight:700;margin-bottom:1.1rem}
+.passos h3{font-size:1.2rem;margin-bottom:.45rem}
+.passos p{color:var(--mudo);font-size:.96rem}
+@media(max-width:760px){.passos{grid-template-columns:1fr}}
+
+/* Demos */
+.demo{background:linear-gradient(180deg,var(--tinta),#0F131C 30%,var(--tinta))}
+.abas{display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none;margin-bottom:2rem;padding-bottom:.25rem}
+.abas::-webkit-scrollbar{display:none}
+.aba{flex:none;display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.1rem;border-radius:999px;border:1px solid var(--linha);background:var(--painel);color:var(--mudo);font:600 .92rem var(--sans);cursor:pointer}
+.aba i{width:.6rem;height:.6rem;border-radius:50%;background:var(--c)}
+.aba[aria-selected="true"]{color:var(--tinta);background:var(--texto);border-color:var(--texto)}
+.demo-grid{display:grid;grid-template-columns:auto minmax(0,1fr);gap:3.5rem;align-items:center}
+.demo-info h3{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+.demo-info .tipo{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;font-weight:600;color:var(--c);margin-bottom:.8rem}
+.demo-info .tipo:before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--c)}
+.demo-info>p{color:var(--mudo);margin-top:.9rem;font-size:1.05rem;max-width:34rem}
+.lista{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:.7rem}
+.lista li{display:flex;gap:.75rem;align-items:flex-start}
+.lista svg{width:1.25rem;height:1.25rem;flex:none;margin-top:.15rem;color:var(--c)}
+.demo-info .acoes{margin-top:2rem}
+.dica{margin-top:1.1rem;font-size:.85rem;color:var(--mudo)}
+@media(max-width:860px){.demo-grid{grid-template-columns:1fr;gap:2.25rem}.demo-grid .cel{margin:0 auto}}
+
+/* Recursos */
+.rec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:1.25rem;overflow:hidden}
+.rec div{background:var(--tinta);padding:1.6rem}
+.rec svg{width:1.6rem;height:1.6rem;color:var(--sinal);margin-bottom:1rem}
+.rec h3{font-size:1.05rem;letter-spacing:-.01em;margin-bottom:.35rem}
+.rec p{color:var(--mudo);font-size:.93rem}
+@media(max-width:860px){.rec{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.rec{grid-template-columns:1fr}}
+
+/* Planos */
+.planos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;align-items:start}
+.plano{padding:1.8rem;border-radius:1.25rem;background:var(--painel);border:1px solid var(--linha);display:flex;flex-direction:column;gap:1.1rem}
+.plano.dest{background:linear-gradient(180deg,#1E1A3A,var(--painel) 60%);border-color:rgba(169,156,255,.5)}
+.plano .tag{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .6rem;border-radius:999px;background:var(--sinal);color:var(--tinta)}
+.plano h3{font-size:1.35rem}
+.plano .para{color:var(--mudo);font-size:.93rem;margin-top:.25rem}
+.plano .preco{font-size:1.9rem;font-weight:750;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.plano .preco small{font-size:.85rem;font-weight:500;color:var(--mudo);letter-spacing:0}
+.plano ul{list-style:none;padding:0;margin:0;display:grid;gap:.6rem;font-size:.94rem}
+.plano li{display:flex;gap:.6rem}
+.plano li svg{width:1.1rem;height:1.1rem;flex:none;margin-top:.2rem;color:var(--ok)}
+.plano .btn{margin-top:.4rem}
+@media(max-width:860px){.planos{grid-template-columns:1fr}}
+.obs{margin-top:1.4rem;color:var(--mudo);font-size:.9rem}
+
+/* Compra */
+.cfg{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.5rem;align-items:start}
+.cfg fieldset{border:1px solid var(--linha);border-radius:1.25rem;background:var(--painel);padding:1.3rem;margin:0 0 1rem;min-width:0}
+.cfg legend{font-weight:700;padding:0 .4rem;font-size:1rem}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
+.opts.dois{grid-template-columns:repeat(2,minmax(0,1fr))}
+.opt{position:relative;display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt>span{display:flex;flex-direction:column;gap:.15rem;height:100%;padding:.9rem;border-radius:.9rem;border:1px solid var(--linha);background:var(--tinta);transition:border-color .2s,background .2s}
+.opt b{font-size:.98rem}.opt small{color:var(--mudo);font-size:.8rem}
+.opt .v{font-weight:750;font-size:1.1rem;font-variant-numeric:tabular-nums;margin-top:.2rem}
+.opt input:checked+span{border-color:var(--sinal);background:rgba(169,156,255,.1)}
+.opt input:focus-visible+span{outline:2px solid var(--sinal);outline-offset:2px}
+.extra{display:flex;align-items:center;gap:1rem;padding:.8rem 0;border-top:1px solid var(--linha)}
+.extra:first-child{border-top:0;padding-top:0}
+.extra div{flex:1;min-width:0}.extra b{display:block}.extra small{color:var(--mudo);font-size:.85rem;display:block}
+.extra .v{color:var(--texto);font-weight:600;font-variant-numeric:tabular-nums}
+.step{display:flex;align-items:center;gap:.5rem;flex:none}
+.step button{width:2.4rem;height:2.4rem;border-radius:50%;border:1px solid var(--linha);background:var(--tinta);color:var(--texto);font-size:1.2rem;cursor:pointer}
+.step output{min-width:1.6rem;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.campos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.campos label{display:grid;gap:.35rem;font-size:.85rem;color:var(--mudo)}
+.campos input,.campos select{width:100%;padding:.75rem .9rem;border-radius:.7rem;border:1px solid var(--linha);background:var(--tinta);color:var(--texto);font:400 1rem var(--sans)}
+.campos input:focus,.campos select:focus{outline:none;border-color:var(--sinal)}
+.resumo-c{position:sticky;top:calc(5rem + env(safe-area-inset-top,0px));padding:1.5rem;border-radius:1.25rem;background:linear-gradient(180deg,#1E1A3A,var(--painel) 70%);border:1px solid rgba(169,156,255,.45);display:grid;gap:.8rem}
+.resumo-c h3{font-size:1.15rem}
+.resumo-c ul{list-style:none;padding:0;margin:0;display:grid;gap:.45rem;font-size:.92rem}
+.resumo-c li{display:flex;justify-content:space-between;gap:1rem}
+.resumo-c li span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+.resumo-c .total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--linha);padding-top:.8rem}
+.resumo-c .total b{font-size:1.7rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.resumo-c .btn{width:100%}
+.pag-l{list-style:none;padding:0;margin:0;display:grid;gap:.8rem}
+.pag-l li{display:grid;gap:.15rem}.pag-l span{color:var(--mudo);font-size:.92rem}
+.resumo-c .total.mes{border-top:0;padding-top:0}.resumo-c .total.mes b{font-size:1.15rem;color:var(--sinal)}
+.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
+.pix{display:grid;gap:.4rem;padding:.8rem;border-radius:.8rem;background:var(--tinta);border:1px solid var(--linha)}
+.pix span{font-size:.75rem;color:var(--mudo)}.pix code{font:600 .95rem var(--sans);overflow-wrap:anywhere;user-select:all}
+@media(max-width:860px){.cfg{grid-template-columns:1fr}.resumo-c{position:static}.opts{grid-template-columns:1fr}}
+@media(max-width:520px){.campos{grid-template-columns:1fr}.opts.dois{grid-template-columns:1fr 1fr}}
+
+/* Perguntas */
+.faq{display:grid;gap:.6rem;max-width:48rem}
+.faq details{border:1px solid var(--linha);border-radius:1rem;background:var(--painel);padding:0 1.25rem}
+.faq summary{list-style:none;cursor:pointer;padding:1.1rem 0;font-weight:600;display:flex;justify-content:space-between;gap:1rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--sinal);font-size:1.3rem;line-height:1}
+.faq details[open] summary:after{content:"–"}
+.faq details p{color:var(--mudo);padding-bottom:1.15rem}
+
+/* Contato */
+.contato .miolo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem;align-items:start}
+.form{display:grid;gap:.9rem;padding:1.8rem;border-radius:1.25rem;background:var(--painel);border:1px solid var(--linha)}
+.form label{display:grid;gap:.35rem;font-size:.88rem;color:var(--mudo)}
+.form input,.form select{width:100%;padding:.8rem .95rem;border-radius:.75rem;border:1px solid var(--linha);background:var(--tinta);color:var(--texto);font:400 1rem var(--sans)}
+.form input:focus,.form select:focus{outline:none;border-color:var(--sinal)}
+.form .btn{width:100%;margin-top:.4rem}
+.fone{display:flex;align-items:center;gap:.6rem;margin-top:1.6rem;flex-wrap:wrap}
+.fone code{font:600 1.05rem var(--sans);padding:.55rem .9rem;border-radius:.7rem;background:var(--painel);border:1px solid var(--linha);user-select:all}
+.fone button{min-height:2.6rem}
+.aviso{font-size:.85rem;color:var(--ok);min-height:1.3em}
+@media(max-width:860px){.contato .miolo{grid-template-columns:1fr}}
+
+.rodape{border-top:1px solid var(--linha);padding-block:2.2rem calc(2.2rem + env(safe-area-inset-bottom,0px));color:var(--mudo);font-size:.88rem}
+.rodape .miolo{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between}
+.rodape nav{display:flex;gap:1.4rem;flex-wrap:wrap}
+.rodape a{text-decoration:none}.rodape a:hover{color:var(--texto)}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 48 48"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#A99CFF"/><stop offset="1" stop-color="#6FE3EE"/></linearGradient></defs><path d="M12 36V12l18 24V12" fill="none" stroke="url(#lg)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="36" r="4.2" fill="#A99CFF"/><circle cx="12" cy="12" r="4.2" fill="#A99CFF"/><circle cx="30" cy="36" r="4.2" fill="#8DBFF5"/><circle cx="30" cy="12" r="4.2" fill="#6FE3EE"/><path d="M36.5 7.5a8 8 0 0 1 0 9M40.5 4a13 13 0 0 1 0 16" fill="none" stroke="#6FE3EE" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="ok" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-12.4 7.4L3 20.5l1.7-5.4A8.5 8.5 0 1121 11.5z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.9"/><circle cx="17" cy="7" r="1" fill="currentColor"/></symbol>
+</svg>
+
+<header class="topo faixa">
+  <div class="miolo">
+    <a class="marca" href="#inicio" aria-label="Nodus, início"><svg aria-hidden="true"><use href="#logo"/></svg>NODUS</a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#como">Como funciona</a><a href="#demos">Demonstrações</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a><a href="#perguntas">Perguntas</a>
+    </nav>
+    <a class="btn btn-p" href="#comprar">Fazer pedido</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="abre faixa">
+    <div class="miolo">
+      <div>
+        <h1>Aproximou o celular.<span>Abriu o seu negócio.</span></h1>
+        <p class="lead">A Nodus cria hubs digitais com NFC para o balcão e a mesa: cardápio, agendamento, WhatsApp, Instagram, Wi-Fi e avaliação no Google em uma página só. O cliente não baixa nada.</p>
+        <div class="acoes">
+          <a class="btn btn-p" href="#demos">Testar as demonstrações</a>
+          <a class="btn btn-s" href="#planos">Ver planos</a>
+        </div>
+        <div class="nichos" aria-label="Para quem é"><span>Restaurantes</span><span>Bares</span><span>Barbearias</span><span>Oficinas</span><span>Lojas de roupa</span><span>Cafés</span></div>
+      </div>
+      <div class="palco" aria-label="Exemplo: plaquinha NFC e o hub aberto no celular">
+        <div class="placa" aria-hidden="true">
+          <div class="acr"><svg><use href="#logo"/></svg><b>APROXIME</b><small>o celular para abrir o hub</small></div>
+          <div class="base"></div>
+        </div>
+        <div class="ondas" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="cel"><div class="tela"><iframe src="demos/tijuca.html?mesa=08" title="Hub do Boteco Tijuca, cliente Nodus" loading="eager"></iframe></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec faixa" id="como">
+    <div class="miolo">
+      <div class="sec-h"><span class="rot">Como funciona</span><h2>Do toque ao pedido em três passos</h2><p>Funciona em qualquer celular atual, Android ou iPhone. Quem não tem NFC usa o QR code impresso na mesma plaquinha.</p></div>
+      <ol class="passos">
+        <li><h3>A plaquinha fica na mesa ou no balcão</h3><p>Entregamos plaquinhas com chip NFC e QR code, com a sua marca. Cada mesa pode ter a sua, com o número identificado.</p></li>
+        <li><h3>O cliente aproxima o celular</h3><p>Sem aplicativo e sem cadastro. O hub abre direto no navegador em menos de um segundo.</p></li>
+        <li><h3>Ele vê, escolhe e chama você</h3><p>Cardápio, horários livres e preços na tela. O pedido ou o agendamento chega pronto no seu WhatsApp.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec faixa demo" id="demos">
+    <div class="miolo">
+      <div class="sec-h"><span class="rot">Demonstrações</span><h2>Teste um hub como se fosse o seu cliente</h2><p>Escolha um tipo de negócio. O celular abaixo funciona de verdade: toque, navegue e faça um agendamento de teste.</p></div>
+      <div class="abas" role="tablist" id="abas"></div>
+      <div class="demo-grid">
+        <div class="cel"><div class="tela"><iframe id="demoFrame" title="Demonstração do hub" loading="lazy"></iframe></div></div>
+        <div class="demo-info" id="demoInfo"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec faixa">
+    <div class="miolo">
+      <div class="sec-h"><span class="rot">O que pode entrar no seu hub</span><h2>Feito para o dia a dia do seu negócio</h2><p>Você escolhe os blocos. A gente monta, publica e atualiza sempre que precisar.</p></div>
+      <div class="rec">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M9 7h6M9 11h6"/></svg><h3>Cardápio e catálogo</h3><p>Categorias, busca, fotos, opções e preços. Muda o preço hoje, aparece hoje, sem reimprimir nada.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5zM1 5h15v14H1z"/></svg><h3>Cardápio em vídeo</h3><p>Cada prato com um vídeo curto do preparo real. O cliente vê o que vai chegar à mesa antes de pedir.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><h3>Agendamento</h3><p>Serviço, profissional, dia e horário. A confirmação chega no WhatsApp com tudo preenchido.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.8 6.3.7-4.7 4.3 1.3 6.2L12 17l-5.6 3 1.3-6.2L3 9.5l6.3-.7z"/></svg><h3>Avaliações no Google</h3><p>Um toque abre direto a tela de avaliar o seu negócio. Ideal para pedir na hora da conta.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg><h3>Wi-Fi sem perguntar</h3><p>Rede e senha na tela, com botão de copiar. O garçom para de ser interrompido.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 10-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><h3>Mesa identificada</h3><p>Cada plaquinha sabe de qual mesa é. O pedido chega no WhatsApp com o número da mesa.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec faixa" id="planos">
+    <div class="miolo">
+      <div class="sec-h"><span class="rot">Planos</span><h2>Escolha o tamanho do seu hub</h2><p>Você paga a implantação uma vez e uma mensalidade com débito automático no cartão. A mensalidade cobre hospedagem, atualizações e suporte.</p></div>
+      <div class="planos" id="planosBox"></div>
+      <p class="obs">Placa de avaliação Google: R$ 79,90 cada ou 2 por R$ 139,90. Plaquinhas NFC de mesa para restaurantes e bares têm valor por quantidade, a consultar.</p>
+    </div>
+  </section>
+
+  <section class="sec faixa compra" id="comprar">
+    <div class="miolo">
+      <div class="sec-h"><span class="rot">Fazer pedido</span><h2>Monte o seu hub e finalize em 1 minuto</h2><p>Escolha o plano e as placas. Você paga a implantação uma vez e a mensalidade é cobrada automaticamente no cartão.</p></div>
+      <form class="cfg" id="cfg" novalidate>
+        <div class="cfg-col">
+          <fieldset><legend>1. Plano</legend><div class="opts" id="cPlanos"></div></fieldset>
+          <fieldset><legend>2. Plaquinhas e placas</legend><div id="cExtras"></div></fieldset>
+          <fieldset><legend>3. Como você paga</legend>
+            <ul class="pag-l">
+              <li><b>Implantação</b><span>Pagamento único para criar o hub e produzir as placas. Pix ou cartão.</span></li>
+              <li><b>Mensalidade</b><span>Cobrada automaticamente no cartão todo mês. Cobre hospedagem, atualizações e suporte. Cancele quando quiser.</span></li>
+            </ul>
+          </fieldset>
+        </div>
+        <aside class="resumo-c" aria-live="polite">
+          <h3>Resumo do pedido</h3><p class="obs" style="margin:-.4rem 0 0">Pagamento de hoje</p>
+          <ul id="cLinhas"></ul>
+          <div class="total"><span>Total</span><b id="cTotal"></b></div>
+          <div class="total mes"><span>Mensalidade</span><b id="cMes"></b></div>
+          <a class="btn btn-p" id="cImpl" target="_blank" rel="noopener">1. Pagar implantação</a>
+          <a class="btn btn-s" id="cAss" target="_blank" rel="noopener">2. Ativar assinatura mensal</a>
+          <a class="btn btn-s" id="cPlacas" target="_blank" rel="noopener" hidden>Pagar placas de avaliação</a>
+          <p class="aviso" id="cAviso" style="color:var(--mudo)"></p>
+        </aside>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec faixa" id="perguntas">
+    <div class="miolo">
+      <div class="sec-h"><span class="rot">Perguntas</span><h2>O que os donos de negócio perguntam</h2></div>
+      <div class="faq">
+        <details><summary>O cliente precisa baixar algum aplicativo?</summary><p>Não. O hub abre no navegador do celular, como um site. Não pede cadastro nem login.</p></details>
+        <details><summary>Funciona em todos os celulares?</summary><p>O NFC funciona na maioria dos Android e em iPhones a partir do XS. Para os outros, a mesma plaquinha tem um QR code que abre o hub pela câmera.</p></details>
+        <details><summary>Consigo mudar preços e itens depois?</summary><p>Sim. Você pede a alteração e a gente atualiza, isso já está incluso na mensalidade. Como o hub é online, a mudança aparece em todas as mesas na hora.</p></details>
+        <details><summary>Quanto tempo leva para ficar pronto?</summary><p>Com logo, fotos e lista de itens em mãos, o hub fica pronto em poucos dias. As plaquinhas são entregues em seguida.</p></details>
+        <details><summary>Os pedidos e agendamentos vão para onde?</summary><p>Para o WhatsApp do seu negócio, com a mensagem já montada: itens, mesa, dia, horário e nome do cliente.</p></details>
+        <details><summary>Posso usar no Instagram também?</summary><p>Pode. O mesmo hub vira o link da bio, então quem chega pelo Instagram vê o mesmo cardápio e a mesma agenda.</p></details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="rodape faixa">
+  <div class="miolo">
+    <a class="marca" href="#inicio"><svg aria-hidden="true"><use href="#logo"/></svg>NODUS</a>
+    <nav aria-label="Rodapé"><a href="#demos">Demonstrações</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a></nav>
+    <span>© 2026 Nodus · Hubs digitais com NFC</span>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* ═══════════ CONFIGURAÇÃO DA NODUS (edite aqui) ═══════════ */
+/* Preços da Nodus: implantação (pagamento único) + mensalidade (débito automático no cartão). */
+const PLANOS = [
+  { id: "essencial", nome: "Essencial", para: "Para começar a usar o NFC", mensal: 99.90, implantacao: 399.90,
+    itens: ["Hub com a sua logo, cores e fotos", "WhatsApp, Instagram, Google e Wi-Fi", "QR code para divulgar o hub", "Hospedagem e troca de links inclusas", "Assinatura mensal, cancele quando quiser"] },
+  { id: "profissional", nome: "Profissional", para: "Cardápio, agenda ou catálogo", mensal: 199.90, implantacao: 599.90, destaque: true,
+    itens: ["Tudo do Essencial", "Cardápio, catálogo ou agendamento", "Pedido ou horário chega no WhatsApp", "Mesa identificada em cada plaquinha", "Atualização de preços e itens inclusa"] },
+  { id: "completo", nome: "Completo", para: "Para quem quer impressionar", mensal: 349.90, implantacao: 999.90,
+    itens: ["Tudo do Profissional", "Cardápio em vídeo", "Logo profissional para o hub", "Atualização mensal de cardápio e fotos", "Suporte prioritário"] },
+];
+/* preco: null = "a consultar". combo: preço especial por quantidade. */
+const EXTRAS = [
+  { id: "google", nome: "Placa de avaliação Google", desc: "Encostou o celular, abre direto a tela de avaliar o seu negócio. Ideal para o caixa e o balcão.", preco: 79.90, combo: { qtd: 2, preco: 139.90 }, rotulo: "R$ 79,90 cada · 2 por R$ 139,90" },
+  { id: "plaquinha", nome: "Plaquinha NFC de mesa", desc: "Uma por mesa, com o número da mesa e a sua marca. Para restaurantes e bares.", preco: null, rotulo: "Valor por quantidade, a consultar" },
+];
+/* Links de pagamento (Mercado Pago ou outro). Vazio = botão aparece como "em breve".
+   implantacao: link de pagamento único · assinatura: link do plano de assinatura mensal
+   placas: link de pagamento para 1 placa e para 2 placas */
+const PAGAMENTO = {
+  essencial:    { implantacao: "https://mpago.la/2ERXioz", assinatura: "https://mpago.la/1trKfZy" },
+  profissional: { implantacao: "https://mpago.la/2UPxthn", assinatura: "https://mpago.la/29CFxXf" },
+  completo:     { implantacao: "https://mpago.la/2Swu7Fj", assinatura: "https://mpago.la/28nrRBw" },
+  placas: { 1: "https://mpago.la/1kD8BQC", 2: "https://mpago.la/2YdQS24" },
+};
+const DEMOS = [
+  { id: "jhows", nome: "Barbearias", cor: "#e0312e", arquivo: "demos/jhows.html", titulo: "Jhow's Barbearia", real: true,
+    texto: "Hub da Jhow's, no UNASP em Engenheiro Coelho. O cliente escolhe o serviço, o barbeiro (Jhow's, Quaresma, Nicolas ou Deivid), o dia e o horário, e a confirmação chega pronta no WhatsApp com o valor.",
+    itens: ["Serviços com preço e tempo reais", "Agenda por barbeiro, respeitando o horário da casa", "Planos do Clube com botão de assinar", "Logo e foto da equipe na capa, em visual street"] },
+  { id: "tijuca", nome: "Bares", cor: "#d4571a", arquivo: "demos/tijuca.html?mesa=08", titulo: "Boteco Tijuca", real: true,
+    texto: "Hub de mesa do Boteco Tijuca, em Mogi Guaçu. O cliente encosta o celular na plaquinha da mesa 08 e já vê o cardápio em vídeo, o Wi-Fi e o Instagram. Os vídeos do cardápio de demonstração foram cedidos pelo Backyard, de Juiz de Fora.",
+    itens: ["Cardápio em vídeo: cada prato como ele chega na mesa", "Mesa identificada pela plaquinha", "Wi-Fi com senha para copiar", "Avaliação no Google na hora da conta"] },
+  { id: "restaurante", nome: "Restaurantes", cor: "#d9502f", arquivo: "demos/restaurante.html?mesa=12", titulo: "Cantina Bella Nonna",
+    texto: "Na mesa 12, o cliente abre o cardápio da cantina, monta o pedido e envia no WhatsApp com o número da mesa e o total.",
+    itens: ["Cardápio por categorias com preços", "Carrinho e pedido pelo WhatsApp", "Mesa identificada pela plaquinha", "Wi-Fi e endereço na mesma página"] },
+  { id: "oficina", nome: "Oficinas", cor: "#F59E0B", arquivo: "demos/oficina.html", titulo: "Garage 77 Auto Center",
+    texto: "Revisão, troca de óleo ou alinhamento: o motorista agenda sozinho e informa o carro antes de chegar.",
+    itens: ["Catálogo de serviços com tempo médio", "Vários serviços no mesmo agendamento", "Modelo e placa do carro na mensagem", "Orçamento rápido pelo WhatsApp"] },
+  { id: "loja", nome: "Lojas de roupa", cor: "#e7b3a3", arquivo: "demos/loja.html", titulo: "Ateliê Lis",
+    texto: "Vitrine no celular: a cliente filtra as peças, abre os detalhes e pede pelo WhatsApp com o nome da peça e o preço.",
+    itens: ["Catálogo com filtros por categoria", "Destaque para o mais vendido", "Pedido da peça pelo WhatsApp", "Instagram e avaliações em um toque"] },
+];
+
+/* ═══════════ CÓDIGO ═══════════ */
+(function () {
+  const $ = s => document.querySelector(s);
+  const ok = '<svg aria-hidden="true"><use href="#ok"/></svg>';
+  const brl = v => "R$ " + Number(v).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+
+  /* Planos */
+  $("#planosBox").innerHTML = PLANOS.map(p => `
+    <article class="plano${p.destaque ? " dest" : ""}">
+      ${p.destaque ? '<span class="tag">Mais escolhido</span>' : ""}
+      <div><h3>${esc(p.nome)}</h3><p class="para">${esc(p.para)}</p></div>
+      <div class="preco">${brl(p.mensal)} <small>/mês</small></div><p class="para" style="margin-top:-.7rem">+ ${brl(p.implantacao)} de implantação (pagamento único)</p>
+      <ul>${p.itens.map(i => `<li>${ok}<span>${esc(i)}</span></li>`).join("")}</ul>
+      <a class="btn ${p.destaque ? "btn-p" : "btn-s"}" href="#comprar" data-plano="${p.id}">Quero o ${esc(p.nome)}</a>
+    </article>`).join("");
+
+  /* Demos */
+  const frame = $("#demoFrame"), info = $("#demoInfo"), abas = $("#abas");
+  abas.innerHTML = DEMOS.map((d, i) => `<button class="aba" role="tab" type="button" id="aba-${d.id}" aria-selected="${i === 0}" aria-controls="demoInfo" data-i="${i}" style="--c:${d.cor}"><i></i>${esc(d.nome)}</button>`).join("");
+  function mostrar(i) {
+    const d = DEMOS[i];
+    abas.querySelectorAll(".aba").forEach((b, k) => b.setAttribute("aria-selected", k === i));
+    frame.src = d.arquivo;
+    frame.title = "Demonstração: " + d.titulo;
+    info.style.setProperty("--c", d.cor);
+    info.innerHTML = `
+      <span class="tipo">${esc(d.nome)}${d.real ? " · cliente real" : ""}</span>
+      <h3>${esc(d.titulo)}</h3>
+      <p>${esc(d.texto)}</p>
+      <ul class="lista">${d.itens.map(t => `<li><svg aria-hidden="true"><use href="#ok"/></svg><span>${esc(t)}</span></li>`).join("")}</ul>
+      <div class="acoes">
+        <a class="btn btn-p" href="#comprar">Quero um hub assim</a>
+        <a class="btn btn-s" href="${d.arquivo}" target="_blank" rel="noopener">Abrir em tela cheia</a>
+      </div>
+      <p class="dica">${d.real ? "Cliente Nodus. Hub real, publicado com autorização do dono." : "Negócio fictício, criado para demonstração. Os botões de contato são de exemplo."}</p>`;
+  }
+  abas.addEventListener("click", e => { const b = e.target.closest(".aba"); if (b) mostrar(+b.dataset.i); });
+  abas.addEventListener("keydown", e => {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const atual = [...abas.children].findIndex(b => b.getAttribute("aria-selected") === "true");
+    const prox = (atual + (e.key === "ArrowRight" ? 1 : -1) + DEMOS.length) % DEMOS.length;
+    mostrar(prox); abas.children[prox].focus();
+  });
+  const pedido = DEMOS.findIndex(d => "#demo-" + d.id === location.hash);
+  mostrar(pedido > -1 ? pedido : 0);
+
+  /* Celulares: a demo roda em 375px (tamanho real de um celular) e é reduzida para caber na moldura */
+  function ajustar(tela) {
+    const f = tela.querySelector("iframe"), s = tela.clientWidth / 375;
+    if (!s) return;
+    f.style.height = tela.clientHeight / s + "px";
+    f.style.transform = `scale(${s})`;
+  }
+  const telas = document.querySelectorAll(".cel .tela");
+  telas.forEach(ajustar);
+  if ("ResizeObserver" in window) { const ro = new ResizeObserver(es => es.forEach(e => ajustar(e.target))); telas.forEach(t => ro.observe(t)); }
+  else addEventListener("resize", () => telas.forEach(ajustar));
+
+  /* ═══ Montador de pedido ═══ */
+  const qtd = { plaquinha: 0, google: 0 };
+  $("#cPlanos").innerHTML = PLANOS.map((p, i) => `<label class="opt"><input type="radio" name="plano" value="${p.id}" ${p.destaque ? "checked" : ""}><span><b>${esc(p.nome)}</b><small>${esc(p.para)}</small><span class="v">${brl(p.mensal)}<small style="font-weight:500">/mês</small></span><small>+ ${brl(p.implantacao)} implantação</small></span></label>`).join("");
+  $("#cExtras").innerHTML = EXTRAS.map(x => `<div class="extra"><div><b>${esc(x.nome)}</b><small>${esc(x.desc)}</small><small class="v">${esc(x.rotulo)}</small></div><div class="step"><button type="button" data-x="${x.id}" data-d="-1" aria-label="Menos ${esc(x.nome)}">−</button><output id="q-${x.id}">0</output><button type="button" data-x="${x.id}" data-d="1" aria-label="Mais ${esc(x.nome)}">+</button></div></div>`).join("");
+  $("#cExtras").addEventListener("click", e => { const b = e.target.closest("[data-x]"); if (!b) return; qtd[b.dataset.x] = Math.max(0, Math.min(99, qtd[b.dataset.x] + +b.dataset.d)); calcular(); });
+  document.querySelectorAll("[data-plano]").forEach(a => a.addEventListener("click", () => { const r = document.querySelector(`input[name=plano][value="${a.dataset.plano}"]`); if (r) { r.checked = true; calcular(); } }));
+  const cf = $("#cfg");
+  cf.addEventListener("input", calcular); cf.addEventListener("change", calcular); cf.addEventListener("submit", e => e.preventDefault());
+  function calcular() {
+    const plano = PLANOS.find(p => p.id === (cf.querySelector("input[name=plano]:checked") || {}).value) || PLANOS[0];
+    const pag = (cf.querySelector("input[name=pag]:checked") || {}).value || "Pix";
+    const valor = (x, q) => x.preco == null ? null : x.combo ? Math.floor(q / x.combo.qtd) * x.combo.preco + (q % x.combo.qtd) * x.preco : q * x.preco;
+    const linhas = [[`Implantação ${plano.nome}`, plano.implantacao]];
+    EXTRAS.forEach(x => { $("#q-" + x.id).textContent = qtd[x.id]; if (qtd[x.id]) linhas.push([`${qtd[x.id]}x ${x.nome}`, valor(x, qtd[x.id])]); });
+    const consultar = linhas.some(l => l[1] == null);
+    const total = linhas.reduce((s, l) => s + (l[1] || 0), 0);
+    const fmt = v => v == null ? "a consultar" : brl(v);
+    $("#cLinhas").innerHTML = linhas.map(l => `<li><span>${esc(l[0])}</span><span>${fmt(l[1])}</span></li>`).join("");
+    $("#cTotal").innerHTML = brl(total) + (consultar ? '<small style="display:block;font-size:.8rem;font-weight:500;color:var(--mudo);text-align:right">+ plaquinhas a consultar</small>' : "");
+    $("#cMes").textContent = brl(plano.mensal) + "/mês";
+    const L = PAGAMENTO[plano.id] || {}, placas = qtd.google, linkPlacas = PAGAMENTO.placas[placas];
+    liga($("#cImpl"), L.implantacao, `1. Pagar implantação · ${brl(plano.implantacao)}`);
+    liga($("#cAss"), L.assinatura, `2. Ativar assinatura · ${brl(plano.mensal)}/mês`);
+    $("#cPlacas").hidden = !placas;
+    if (placas) liga($("#cPlacas"), linkPlacas, `Pagar ${placas} placa${placas > 1 ? "s" : ""} de avaliação · ${brl(valor(EXTRAS[0], placas))}`);
+    const falta = !L.implantacao || !L.assinatura || (placas && !linkPlacas);
+    $("#cAviso").textContent = consultar ? "As plaquinhas de mesa são orçadas à parte, conforme o número de mesas." : placas > 2 ? "Para mais de 2 placas, pague os links de 2 e de 1 placa conforme a quantidade." : falta ? "Pagamento online em breve." : "Pagamento seguro pelo Mercado Pago. Faça os dois pagamentos para ativar o seu hub.";
+  }
+  function liga(a, url, rotulo) {
+    a.textContent = rotulo;
+    if (url) { a.href = url; a.removeAttribute("aria-disabled"); }
+    else { a.removeAttribute("href"); a.setAttribute("aria-disabled", "true"); }
+  }
+  document.querySelector(".resumo-c").addEventListener("click", e => { const a = e.target.closest("a[aria-disabled]"); if (a) { e.preventDefault(); $("#cAviso").textContent = "Pagamento online em breve."; } });
+  calcular();
+
+})();
+</script>
+</body>
+</html>
