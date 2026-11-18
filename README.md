@@ -31,16 +31,38 @@ O Boteco Tijuca e a Jhow's Barbearia são clientes reais e o uso foi autorizado 
 - **Relatório de acessos:** registra aberturas por NFC ou QR code (`?o=nfc` / `?o=qr`), mesa, cliques em cada botão, vídeos vistos, pedidos e agendamentos, via Google Analytics 4 ou Umami. Nenhum dado pessoal é coletado.
 - **Funciona em qualquer celular:** sem dependências, um único arquivo HTML com imagens embutidas e aviso de falta de conexão.
 
+## Site de vendas
+
+- Demonstrações ao vivo dentro de um celular na própria página, com abas por tipo de negócio.
+- Planos com tabela comparativa gerada a partir de uma configuração única (`PLANOS` e `COMPARATIVO`).
+- Vitrine da placa de avaliação Google com escolha de cor.
+- Montador de pedido: escolhe plano e placas, calcula o total (com preço de combo) e leva ao pagamento da implantação e à assinatura mensal no Mercado Pago.
+
+| Placa de avaliação | Comparativo dos planos |
+|---|---|
+| ![](docs/placa.jpg) | ![](docs/comparativo.jpg) |
+
+## Estrutura
+
+```
+index.html        site de vendas (página única, sem dependências)
+demos/            hubs gerados: 2 clientes reais e 3 demonstrações
+hub/
+  base.html       motor do hub (HTML, CSS e JavaScript puros)
+  gerar.py        configuração dos clientes reais e geração dos arquivos
+  ficticias.py    configuração das demonstrações
+  dados.json      cardápios, serviços e catálogo
+  img/            logos e fotos usadas nos hubs
+docs/             prints usados neste README
+```
+
 ## Como gerar os hubs
 
 ```bash
 python3 hub/gerar.py . demos
 ```
 
-- `hub/base.html`: motor do hub (HTML, CSS e JavaScript puros).
-- `hub/gerar.py`: configuração dos clientes reais e geração dos arquivos; o bloco `ANALYTICS` recebe o código do relatório de cada cliente.
-- `hub/ficticias.py`: configuração das demonstrações.
-- `hub/dados.json`: cardápios, serviços e catálogo.
+Cada hub sai como um único arquivo HTML, com as imagens embutidas. No `gerar.py`, o bloco `ANALYTICS` recebe o código do relatório de cada cliente (Google Analytics 4 ou Umami). As placas são gravadas com `?o=nfc` e o QR code com `?o=qr`, para o relatório separar a origem de cada acesso.
 
 ## Tecnologias
 

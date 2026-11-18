@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0B0E14">
 <title>Nodus Hub Digital</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Hubs digitais com NFC para restaurantes, bares, barbearias, oficinas e lojas.">
+<meta name="theme-color" content="#0B0E14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20width%3D%2248%22%20height%3D%2248%22%20rx%3D%2211%22%20fill%3D%22%230B0E14%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22lg%22%20x1%3D%220%22%20y1%3D%221%22%20x2%3D%221%22%20y2%3D%220%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23A99CFF%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%236FE3EE%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath%20d%3D%22M12%2036V12l18%2024V12%22%20fill%3D%22none%22%20stroke%3D%22url%28%23lg%29%22%20stroke-width%3D%223.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2236%22%20r%3D%224.2%22%20fill%3D%22%23A99CFF%22/%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%224.2%22%20fill%3D%22%23A99CFF%22/%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2236%22%20r%3D%224.2%22%20fill%3D%22%238DBFF5%22/%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2212%22%20r%3D%224.2%22%20fill%3D%22%236FE3EE%22/%3E%3Cpath%20d%3D%22M36.5%207.5a8%208%200%200%201%200%209M40.5%204a13%2013%200%200%201%200%2016%22%20fill%3D%22none%22%20stroke%3D%22%236FE3EE%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Nodus · Hubs digitais com NFC">
+<meta property="og:description" content="Hubs digitais com NFC para restaurantes, bares, barbearias, oficinas e lojas.">
+<meta property="og:url" content="https://arthurfuturedev.github.io/nodus/">
+<meta property="og:image" content="https://arthurfuturedev.github.io/nodus/docs/site.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" rel="stylesheet">
 <style>
-body{margin:0}
-
 /* Layout: faixas largas em tinta escura; o celular com a demo ao vivo é o centro de cada seção. */
 :root{
   --tinta:#0B0E14; --painel:#131823; --painel2:#1A2130; --linha:rgba(226,232,245,.1);
@@ -115,12 +120,12 @@ p{margin:0}
 @media(max-width:860px){.demo-grid{grid-template-columns:1fr;gap:2.25rem}.demo-grid .cel{margin:0 auto}}
 
 /* Recursos */
-.rec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:1.25rem;overflow:hidden}
+.rec{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:1.25rem;overflow:hidden}
 .rec div{background:var(--tinta);padding:1.6rem}
 .rec svg{width:1.6rem;height:1.6rem;color:var(--sinal);margin-bottom:1rem}
 .rec h3{font-size:1.05rem;letter-spacing:-.01em;margin-bottom:.35rem}
 .rec p{color:var(--mudo);font-size:.93rem}
-@media(max-width:860px){.rec{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:980px){.rec{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.rec{grid-template-columns:1fr}}
 
 /* Planos */
@@ -175,8 +180,6 @@ p{margin:0}
 .pag-l li{display:grid;gap:.15rem}.pag-l span{color:var(--mudo);font-size:.92rem}
 .resumo-c .total.mes{border-top:0;padding-top:0}.resumo-c .total.mes b{font-size:1.15rem;color:var(--sinal)}
 .btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
-.pix{display:grid;gap:.4rem;padding:.8rem;border-radius:.8rem;background:var(--tinta);border:1px solid var(--linha)}
-.pix span{font-size:.75rem;color:var(--mudo)}.pix code{font:600 .95rem var(--sans);overflow-wrap:anywhere;user-select:all}
 @media(max-width:860px){.cfg{grid-template-columns:1fr}.resumo-c{position:static}.opts{grid-template-columns:1fr}}
 @media(max-width:520px){.campos{grid-template-columns:1fr}.opts.dois{grid-template-columns:1fr 1fr}}
 
@@ -189,18 +192,45 @@ p{margin:0}
 .faq details[open] summary:after{content:"–"}
 .faq details p{color:var(--mudo);padding-bottom:1.15rem}
 
-/* Contato */
-.contato .miolo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem;align-items:start}
-.form{display:grid;gap:.9rem;padding:1.8rem;border-radius:1.25rem;background:var(--painel);border:1px solid var(--linha)}
-.form label{display:grid;gap:.35rem;font-size:.88rem;color:var(--mudo)}
-.form input,.form select{width:100%;padding:.8rem .95rem;border-radius:.75rem;border:1px solid var(--linha);background:var(--tinta);color:var(--texto);font:400 1rem var(--sans)}
-.form input:focus,.form select:focus{outline:none;border-color:var(--sinal)}
-.form .btn{width:100%;margin-top:.4rem}
-.fone{display:flex;align-items:center;gap:.6rem;margin-top:1.6rem;flex-wrap:wrap}
-.fone code{font:600 1.05rem var(--sans);padding:.55rem .9rem;border-radius:.7rem;background:var(--painel);border:1px solid var(--linha);user-select:all}
-.fone button{min-height:2.6rem}
-.aviso{font-size:.85rem;color:var(--ok);min-height:1.3em}
-@media(max-width:860px){.contato .miolo{grid-template-columns:1fr}}
+.aviso{font-size:.85rem;min-height:1.3em}
+
+/* Comparativo dos planos */
+.comp-t{margin:3rem 0 1rem;font-size:1.25rem}
+.comp{border:1px solid var(--linha);border-radius:1.25rem;overflow:hidden;background:var(--painel)}
+.comp table{width:100%;border-collapse:collapse;font-size:.93rem}
+.comp th,.comp td{padding:.85rem 1rem;border-top:1px solid var(--linha);text-align:center;vertical-align:middle}
+.comp thead th{border-top:0;font-size:.98rem;padding-block:1.1rem}
+.comp thead th small{display:block;color:var(--mudo);font-weight:500;font-size:.8rem;font-variant-numeric:tabular-nums}
+.comp th[scope=row],.comp thead th:first-child{text-align:left;font-weight:500;color:var(--texto)}
+.comp .dest{background:rgba(169,156,255,.07)}
+.comp thead .dest{color:var(--sinal)}
+.comp .grupo th{text-align:left;padding-left:1rem;background:var(--tinta);color:var(--mudo);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding-block:.6rem}
+.comp svg{width:1.15rem;height:1.15rem;color:var(--ok);vertical-align:middle}
+.comp .nao{color:rgba(152,162,181,.45)}
+.comp td.txt{font-size:.85rem;color:var(--mudo)}
+@media(max-width:600px){.comp table{table-layout:fixed;font-size:.82rem}.comp th,.comp td{padding:.65rem .3rem;overflow-wrap:anywhere}.comp th[scope=row],.comp thead th:first-child{width:36%;padding-left:.8rem}.comp thead th{font-size:.7rem;overflow-wrap:normal;letter-spacing:-.01em}.comp thead th small{display:none}.comp td.txt{font-size:.74rem}}
+
+/* Placa de avaliação Google */
+.placa-g .miolo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3.5rem;align-items:center}
+.vitrine{display:grid;justify-items:center;gap:1.4rem}
+.cores{display:flex;gap:.5rem}
+.cor{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:999px;border:1px solid var(--linha);background:var(--painel);color:var(--mudo);font:600 .9rem var(--sans);cursor:pointer}
+.cor i{width:.95rem;height:.95rem;border-radius:50%;background:var(--c);box-shadow:0 0 0 1px rgba(255,255,255,.35)}
+.cor[aria-pressed="true"]{color:var(--tinta);background:var(--texto);border-color:var(--texto)}
+.foto-placa{width:min(19rem,100%);aspect-ratio:3/4;border-radius:1.4rem;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.foto-placa img{width:100%;height:100%;object-fit:cover;display:block}
+.pg{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:.8rem;padding:2rem 1.6rem 1.6rem;text-align:center;color:#fff;background:var(--fundo);border:1px solid rgba(255,255,255,.14);border-radius:inherit;transition:background .35s}
+.pg .est{color:#FBBC04;font-size:1.5rem;letter-spacing:.18em}
+.pg b{display:block;font-size:1.55rem;line-height:1.1;letter-spacing:-.01em}
+.pg em{font-style:normal;display:block;margin-top:.3rem;font-size:.95rem;opacity:.8}
+.pg .nfc{display:flex;align-items:center;gap:.9rem}
+.pg .nfc svg{width:2.6rem;height:2.6rem}
+.pg .qr{width:5.6rem;height:5.6rem;border-radius:.4rem;background:#fff;padding:.35rem}
+.pg small{font-size:.72rem;letter-spacing:.06em;opacity:.75;text-transform:uppercase}
+.placa-g .lista svg{color:var(--ok)}
+.placa-g .preco-p{margin-top:1.6rem;font-size:1.05rem}
+.placa-g .preco-p b{white-space:nowrap;font-size:1.6rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+@media(max-width:860px){.placa-g .miolo{grid-template-columns:1fr;gap:2.5rem}.vitrine{order:-1}}
 
 .rodape{border-top:1px solid var(--linha);padding-block:2.2rem calc(2.2rem + env(safe-area-inset-bottom,0px));color:var(--mudo);font-size:.88rem}
 .rodape .miolo{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between}
@@ -222,7 +252,7 @@ p{margin:0}
   <div class="miolo">
     <a class="marca" href="#inicio" aria-label="Nodus, início"><svg aria-hidden="true"><use href="#logo"/></svg>NODUS</a>
     <nav class="menu" aria-label="Seções">
-      <a href="#como">Como funciona</a><a href="#demos">Demonstrações</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a><a href="#perguntas">Perguntas</a>
+      <a href="#como">Como funciona</a><a href="#demos">Demonstrações</a><a href="#placa">Placa Google</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a><a href="#perguntas">Perguntas</a>
     </nav>
     <a class="btn btn-p" href="#comprar">Fazer pedido</a>
   </div>
@@ -256,7 +286,7 @@ p{margin:0}
       <div class="sec-h"><span class="rot">Como funciona</span><h2>Do toque ao pedido em três passos</h2><p>Funciona em qualquer celular atual, Android ou iPhone. Quem não tem NFC usa o QR code impresso na mesma plaquinha.</p></div>
       <ol class="passos">
         <li><h3>A plaquinha fica na mesa ou no balcão</h3><p>Entregamos plaquinhas com chip NFC e QR code, com a sua marca. Cada mesa pode ter a sua, com o número identificado.</p></li>
-        <li><h3>O cliente aproxima o celular</h3><p>Sem aplicativo e sem cadastro. O hub abre direto no navegador em menos de um segundo.</p></li>
+        <li><h3>O cliente aproxima o celular</h3><p>Sem aplicativo e sem cadastro. O hub abre na hora, direto no navegador.</p></li>
         <li><h3>Ele vê, escolhe e chama você</h3><p>Cardápio, horários livres e preços na tela. O pedido ou o agendamento chega pronto no seu WhatsApp.</p></li>
       </ol>
     </div>
@@ -277,12 +307,36 @@ p{margin:0}
     <div class="miolo">
       <div class="sec-h"><span class="rot">O que pode entrar no seu hub</span><h2>Feito para o dia a dia do seu negócio</h2><p>Você escolhe os blocos. A gente monta, publica e atualiza sempre que precisar.</p></div>
       <div class="rec">
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M9 7h6M9 11h6"/></svg><h3>Cardápio e catálogo</h3><p>Categorias, busca, fotos, opções e preços. Muda o preço hoje, aparece hoje, sem reimprimir nada.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5M9 7h6M9 11h6"/></svg><h3>Cardápio e catálogo</h3><p>Categorias, fotos, descrições e preços. Mudou o preço hoje, aparece hoje, sem reimprimir nada.</p></div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5zM1 5h15v14H1z"/></svg><h3>Cardápio em vídeo</h3><p>Cada prato com um vídeo curto do preparo real. O cliente vê o que vai chegar à mesa antes de pedir.</p></div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg><h3>Agendamento</h3><p>Serviço, profissional, dia e horário. A confirmação chega no WhatsApp com tudo preenchido.</p></div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.8 6.3.7-4.7 4.3 1.3 6.2L12 17l-5.6 3 1.3-6.2L3 9.5l6.3-.7z"/></svg><h3>Avaliações no Google</h3><p>Um toque abre direto a tela de avaliar o seu negócio. Ideal para pedir na hora da conta.</p></div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5a15 15 0 0 1 20 0M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1" fill="currentColor"/></svg><h3>Wi-Fi sem perguntar</h3><p>Rede e senha na tela, com botão de copiar. O garçom para de ser interrompido.</p></div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5a7 7 0 10-14 0C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><h3>Mesa identificada</h3><p>Cada plaquinha sabe de qual mesa é. O pedido chega no WhatsApp com o número da mesa.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><h3>Relatório de acessos</h3><p>Quantas pessoas encostaram na placa, abriram o cardápio, viram cada vídeo e clicaram em avaliar.</p></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg><h3>Clube e assinaturas</h3><p>Planos mensais do seu negócio, como o clube da barbearia, com botão para o cliente assinar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec faixa placa-g demo" id="placa">
+    <div class="miolo">
+      <div>
+        <span class="rot">Placa de avaliação Google</span>
+        <h2 style="font-size:clamp(1.9rem,4.2vw,2.9rem)">Mais avaliações sem precisar pedir duas vezes</h2>
+        <p style="color:var(--mudo);margin-top:.9rem;font-size:1.08rem;max-width:34rem">O cliente encosta o celular na placa e já cai na tela de dar estrelas para o seu negócio no Google. Fica no caixa, no balcão ou na saída.</p>
+        <ul class="lista">
+          <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Chip NFC e QR code na mesma placa, funciona em qualquer celular</span></li>
+          <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Abre direto a avaliação do seu perfil, sem procurar no Google</span></li>
+          <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Disponível em preto e em azul</span></li>
+          <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Pode ser comprada junto com o hub ou sozinha</span></li>
+        </ul>
+        <p class="preco-p"><b>R$ 79,90</b> cada · <b>2 por R$ 139,90</b></p>
+        <div class="acoes"><a class="btn btn-p" href="#comprar" id="addPlaca">Adicionar ao pedido</a></div>
+      </div>
+      <div class="vitrine">
+        <div class="foto-placa" id="fotoPlaca"></div>
+        <div class="cores" role="group" aria-label="Cor da placa" id="cores"></div>
       </div>
     </div>
   </section>
@@ -291,7 +345,9 @@ p{margin:0}
     <div class="miolo">
       <div class="sec-h"><span class="rot">Planos</span><h2>Escolha o tamanho do seu hub</h2><p>Você paga a implantação uma vez e uma mensalidade com débito automático no cartão. A mensalidade cobre hospedagem, atualizações e suporte.</p></div>
       <div class="planos" id="planosBox"></div>
-      <p class="obs">Placa de avaliação Google: R$ 79,90 cada ou 2 por R$ 139,90. Plaquinhas NFC de mesa para restaurantes e bares têm valor por quantidade, a consultar.</p>
+      <h3 class="comp-t">Compare os planos</h3>
+      <div class="comp" id="comp"></div>
+      <p class="obs">Placa de avaliação Google: R$ 79,90 cada ou 2 por R$ 139,90. Plaquinhas NFC de mesa para restaurantes e bares têm valor por quantidade, combinado depois do pedido.</p>
     </div>
   </section>
 
@@ -333,6 +389,9 @@ p{margin:0}
         <details><summary>Quanto tempo leva para ficar pronto?</summary><p>Com logo, fotos e lista de itens em mãos, o hub fica pronto em poucos dias. As plaquinhas são entregues em seguida.</p></details>
         <details><summary>Os pedidos e agendamentos vão para onde?</summary><p>Para o WhatsApp do seu negócio, com a mensagem já montada: itens, mesa, dia, horário e nome do cliente.</p></details>
         <details><summary>Posso usar no Instagram também?</summary><p>Pode. O mesmo hub vira o link da bio, então quem chega pelo Instagram vê o mesmo cardápio e a mesma agenda.</p></details>
+        <details><summary>Consigo ver quantas pessoas usam o hub?</summary><p>Sim, a partir do plano Profissional. Você recebe um link com o relatório, que se atualiza sozinho: quantas pessoas encostaram na placa ou leram o QR code, o que abriram, quais pratos tiveram o vídeo visto e quantos clicaram em avaliar. Nenhum dado pessoal do seu cliente é coletado.</p></details>
+        <details><summary>A placa de avaliação funciona sem o hub?</summary><p>Funciona. Ela abre direto a tela de avaliação do seu negócio no Google, então pode ser comprada sozinha.</p></details>
+        <details><summary>Como funciona o pagamento?</summary><p>A implantação é paga uma vez, no Pix ou no cartão. A mensalidade é uma assinatura no cartão, cobrada automaticamente todo mês pelo Mercado Pago. Dá para cancelar quando quiser.</p></details>
       </div>
     </div>
   </section>
@@ -342,7 +401,7 @@ p{margin:0}
 <footer class="rodape faixa">
   <div class="miolo">
     <a class="marca" href="#inicio"><svg aria-hidden="true"><use href="#logo"/></svg>NODUS</a>
-    <nav aria-label="Rodapé"><a href="#demos">Demonstrações</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a></nav>
+    <nav aria-label="Rodapé"><a href="#demos">Demonstrações</a><a href="#placa">Placa Google</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a><a href="#perguntas">Perguntas</a></nav>
     <span>© 2026 Nodus · Hubs digitais com NFC</span>
   </div>
 </footer>
@@ -355,14 +414,14 @@ const PLANOS = [
   { id: "essencial", nome: "Essencial", para: "Para começar a usar o NFC", mensal: 99.90, implantacao: 399.90,
     itens: ["Hub com a sua logo, cores e fotos", "WhatsApp, Instagram, Google e Wi-Fi", "QR code para divulgar o hub", "Hospedagem e troca de links inclusas", "Assinatura mensal, cancele quando quiser"] },
   { id: "profissional", nome: "Profissional", para: "Cardápio, agenda ou catálogo", mensal: 199.90, implantacao: 599.90, destaque: true,
-    itens: ["Tudo do Essencial", "Cardápio, catálogo ou agendamento", "Pedido ou horário chega no WhatsApp", "Mesa identificada em cada plaquinha", "Atualização de preços e itens inclusa"] },
+    itens: ["Tudo do Essencial", "Cardápio, catálogo ou agendamento", "Pedido ou horário chega no WhatsApp", "Mesa identificada em cada plaquinha", "Relatório mensal de acessos"] },
   { id: "completo", nome: "Completo", para: "Para quem quer impressionar", mensal: 349.90, implantacao: 999.90,
     itens: ["Tudo do Profissional", "Cardápio em vídeo", "Logo profissional para o hub", "Atualização mensal de cardápio e fotos", "Suporte prioritário"] },
 ];
 /* preco: null = "a consultar". combo: preço especial por quantidade. */
 const EXTRAS = [
   { id: "google", nome: "Placa de avaliação Google", desc: "Encostou o celular, abre direto a tela de avaliar o seu negócio. Ideal para o caixa e o balcão.", preco: 79.90, combo: { qtd: 2, preco: 139.90 }, rotulo: "R$ 79,90 cada · 2 por R$ 139,90" },
-  { id: "plaquinha", nome: "Plaquinha NFC de mesa", desc: "Uma por mesa, com o número da mesa e a sua marca. Para restaurantes e bares.", preco: null, rotulo: "Valor por quantidade, a consultar" },
+  { id: "plaquinha", nome: "Plaquinha NFC de mesa", desc: "Uma por mesa, com o número da mesa e a sua marca. Para restaurantes e bares.", preco: null, rotulo: "Valor por quantidade, combinado depois do pedido" },
 ];
 /* Links de pagamento (Mercado Pago ou outro). Vazio = botão aparece como "em breve".
    implantacao: link de pagamento único · assinatura: link do plano de assinatura mensal
@@ -373,6 +432,33 @@ const PAGAMENTO = {
   completo:     { implantacao: "https://mpago.la/2Swu7Fj", assinatura: "https://mpago.la/28nrRBw" },
   placas: { 1: "https://mpago.la/1kD8BQC", 2: "https://mpago.la/2YdQS24" },
 };
+/* Comparativo: true = incluso, false = não incluso, texto = valor escrito na célula. */
+const COMPARATIVO = [
+  ["O hub", [
+    ["Hub com a sua logo, cores e fotos", true, true, true],
+    ["WhatsApp, Instagram, Google e Wi-Fi", true, true, true],
+    ["QR code para divulgar o hub", true, true, true],
+    ["Hospedagem e troca de links", true, true, true],
+  ]],
+  ["Vendas e atendimento", [
+    ["Cardápio, catálogo ou agendamento", false, true, true],
+    ["Pedido ou horário chega no WhatsApp", false, true, true],
+    ["Mesa identificada em cada plaquinha", false, true, true],
+    ["Cardápio em vídeo", false, false, true],
+  ]],
+  ["Acompanhamento", [
+    ["Relatório mensal de acessos", false, true, true],
+    ["Atualização de preços e itens", "Links", "Sempre que pedir", "Sempre que pedir"],
+    ["Atualização mensal de cardápio e fotos", false, false, true],
+    ["Logo profissional para o hub", false, false, true],
+    ["Suporte", "Normal", "Normal", "Prioritário"],
+  ]],
+];
+/* Fotos da placa de avaliação. Vazio = mostra a ilustração. Ex.: preto: "img/placa-preta.jpg" */
+const PLACA_CORES = [
+  { id: "preto", nome: "Preto", cor: "#0d0f13", fundo: "linear-gradient(160deg,#20242c,#08090c)", foto: "" },
+  { id: "azul", nome: "Azul", cor: "#1d4fd8", fundo: "linear-gradient(160deg,#2f6bf0,#163a9e)", foto: "" },
+];
 const DEMOS = [
   { id: "jhows", nome: "Barbearias", cor: "#e0312e", arquivo: "demos/jhows.html", titulo: "Jhow's Barbearia", real: true,
     texto: "Hub da Jhow's, no UNASP em Engenheiro Coelho. O cliente escolhe o serviço, o barbeiro (Jhow's, Quaresma, Nicolas ou Deivid), o dia e o horário, e a confirmação chega pronta no WhatsApp com o valor.",
@@ -408,6 +494,42 @@ const DEMOS = [
       <ul>${p.itens.map(i => `<li>${ok}<span>${esc(i)}</span></li>`).join("")}</ul>
       <a class="btn ${p.destaque ? "btn-p" : "btn-s"}" href="#comprar" data-plano="${p.id}">Quero o ${esc(p.nome)}</a>
     </article>`).join("");
+
+  /* Comparativo dos planos */
+  const sim = '<svg role="img" aria-label="Incluso"><use href="#ok"/></svg>', nao = '<span class="nao" aria-label="Não incluso">—</span>';
+  const dIdx = PLANOS.findIndex(p => p.destaque);
+  const cl = (i, txt) => { const c = [txt && "txt", i === dIdx && "dest"].filter(Boolean).join(" "); return c ? ` class="${c}"` : ""; };
+  $("#comp").innerHTML = `<div style="overflow-x:auto"><table>
+    <thead><tr><th scope="col">Plano</th>${PLANOS.map((p, i) => `<th scope="col"${cl(i)}>${esc(p.nome)}<small>${brl(p.mensal)}/mês</small></th>`).join("")}</tr></thead>
+    <tbody>${COMPARATIVO.map(([g, linhas]) => `<tr class="grupo"><th colspan="${PLANOS.length + 1}" scope="colgroup">${esc(g)}</th></tr>` +
+      linhas.map(([nome, ...v]) => `<tr><th scope="row">${esc(nome)}</th>${v.map((x, i) => `<td${cl(i, typeof x === "string")}>${x === true ? sim : x === false ? nao : esc(x)}</td>`).join("")}</tr>`).join("")).join("")}
+      <tr><th scope="row">Implantação (uma vez)</th>${PLANOS.map((p, i) => `<td${cl(i, true)}>${brl(p.implantacao)}</td>`).join("")}</tr>
+    </tbody></table></div>`;
+
+  /* Placa de avaliação Google */
+  const qrSvg = (() => { /* desenho ilustrativo de QR code; o QR real é impresso na placa */
+    const n = 21; let r = "", x = 7;
+    const fin = (a, b) => `<path d="M${a} ${b}h7v7h-7z M${a + 1} ${b + 1}v5h5v-5z" fill-rule="evenodd"/><rect x="${a + 2}" y="${b + 2}" width="3" height="3"/>`;
+    for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+      if ((i < 8 && j < 8) || (i < 8 && j > 12) || (i > 12 && j < 8)) continue;
+      x = (x * 1103515245 + 12345) % 2147483648; if (x % 5 < 2) r += `M${j} ${i}h1v1h-1z`;
+    }
+    return `<svg viewBox="0 0 ${n} ${n}" fill="#111" aria-hidden="true">${fin(0, 0)}${fin(14, 0)}${fin(0, 14)}<path d="${r}"/></svg>`;
+  })();
+  const nfcSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2.5" width="9" height="16" rx="2"/><path d="M18 8.5a4.5 4.5 0 0 1 0 6M20.5 6a8 8 0 0 1 0 11"/></svg>';
+  function placa(id) {
+    const c = PLACA_CORES.find(k => k.id === id) || PLACA_CORES[0];
+    $("#cores").querySelectorAll(".cor").forEach(b => b.setAttribute("aria-pressed", b.dataset.cor === c.id));
+    $("#fotoPlaca").innerHTML = c.foto
+      ? `<img src="${esc(c.foto)}" alt="Placa de avaliação Google na cor ${esc(c.nome.toLowerCase())}">`
+      : `<div class="pg" style="--fundo:${c.fundo}" role="img" aria-label="Ilustração da placa de avaliação Google na cor ${esc(c.nome.toLowerCase())}">
+          <div><div class="est">★★★★★</div><b>Gostou?<br>Avalie a gente</b><em>no Google</em></div>
+          <div class="nfc">${nfcSvg}<div class="qr">${qrSvg}</div></div>
+          <small>Aproxime o celular ou leia o QR code</small></div>`;
+  }
+  $("#cores").innerHTML = PLACA_CORES.map(c => `<button type="button" class="cor" data-cor="${c.id}" style="--c:${c.cor}"><i></i>${esc(c.nome)}</button>`).join("");
+  $("#cores").addEventListener("click", e => { const b = e.target.closest(".cor"); if (b) placa(b.dataset.cor); });
+  placa(PLACA_CORES[0].id);
 
   /* Demos */
   const frame = $("#demoFrame"), info = $("#demoInfo"), abas = $("#abas");
@@ -456,20 +578,20 @@ const DEMOS = [
   $("#cPlanos").innerHTML = PLANOS.map((p, i) => `<label class="opt"><input type="radio" name="plano" value="${p.id}" ${p.destaque ? "checked" : ""}><span><b>${esc(p.nome)}</b><small>${esc(p.para)}</small><span class="v">${brl(p.mensal)}<small style="font-weight:500">/mês</small></span><small>+ ${brl(p.implantacao)} implantação</small></span></label>`).join("");
   $("#cExtras").innerHTML = EXTRAS.map(x => `<div class="extra"><div><b>${esc(x.nome)}</b><small>${esc(x.desc)}</small><small class="v">${esc(x.rotulo)}</small></div><div class="step"><button type="button" data-x="${x.id}" data-d="-1" aria-label="Menos ${esc(x.nome)}">−</button><output id="q-${x.id}">0</output><button type="button" data-x="${x.id}" data-d="1" aria-label="Mais ${esc(x.nome)}">+</button></div></div>`).join("");
   $("#cExtras").addEventListener("click", e => { const b = e.target.closest("[data-x]"); if (!b) return; qtd[b.dataset.x] = Math.max(0, Math.min(99, qtd[b.dataset.x] + +b.dataset.d)); calcular(); });
+  $("#addPlaca").addEventListener("click", () => { if (!qtd.google) { qtd.google = 1; calcular(); } });
   document.querySelectorAll("[data-plano]").forEach(a => a.addEventListener("click", () => { const r = document.querySelector(`input[name=plano][value="${a.dataset.plano}"]`); if (r) { r.checked = true; calcular(); } }));
   const cf = $("#cfg");
   cf.addEventListener("input", calcular); cf.addEventListener("change", calcular); cf.addEventListener("submit", e => e.preventDefault());
   function calcular() {
     const plano = PLANOS.find(p => p.id === (cf.querySelector("input[name=plano]:checked") || {}).value) || PLANOS[0];
-    const pag = (cf.querySelector("input[name=pag]:checked") || {}).value || "Pix";
     const valor = (x, q) => x.preco == null ? null : x.combo ? Math.floor(q / x.combo.qtd) * x.combo.preco + (q % x.combo.qtd) * x.preco : q * x.preco;
     const linhas = [[`Implantação ${plano.nome}`, plano.implantacao]];
     EXTRAS.forEach(x => { $("#q-" + x.id).textContent = qtd[x.id]; if (qtd[x.id]) linhas.push([`${qtd[x.id]}x ${x.nome}`, valor(x, qtd[x.id])]); });
     const consultar = linhas.some(l => l[1] == null);
     const total = linhas.reduce((s, l) => s + (l[1] || 0), 0);
-    const fmt = v => v == null ? "a consultar" : brl(v);
+    const fmt = v => v == null ? "a combinar" : brl(v);
     $("#cLinhas").innerHTML = linhas.map(l => `<li><span>${esc(l[0])}</span><span>${fmt(l[1])}</span></li>`).join("");
-    $("#cTotal").innerHTML = brl(total) + (consultar ? '<small style="display:block;font-size:.8rem;font-weight:500;color:var(--mudo);text-align:right">+ plaquinhas a consultar</small>' : "");
+    $("#cTotal").innerHTML = brl(total) + (consultar ? '<small style="display:block;font-size:.8rem;font-weight:500;color:var(--mudo);text-align:right">+ plaquinhas de mesa, valor combinado depois</small>' : "");
     $("#cMes").textContent = brl(plano.mensal) + "/mês";
     const L = PAGAMENTO[plano.id] || {}, placas = qtd.google, linkPlacas = PAGAMENTO.placas[placas];
     liga($("#cImpl"), L.implantacao, `1. Pagar implantação · ${brl(plano.implantacao)}`);
@@ -477,7 +599,7 @@ const DEMOS = [
     $("#cPlacas").hidden = !placas;
     if (placas) liga($("#cPlacas"), linkPlacas, `Pagar ${placas} placa${placas > 1 ? "s" : ""} de avaliação · ${brl(valor(EXTRAS[0], placas))}`);
     const falta = !L.implantacao || !L.assinatura || (placas && !linkPlacas);
-    $("#cAviso").textContent = consultar ? "As plaquinhas de mesa são orçadas à parte, conforme o número de mesas." : placas > 2 ? "Para mais de 2 placas, pague os links de 2 e de 1 placa conforme a quantidade." : falta ? "Pagamento online em breve." : "Pagamento seguro pelo Mercado Pago. Faça os dois pagamentos para ativar o seu hub.";
+    $("#cAviso").textContent = consultar ? "As plaquinhas de mesa são orçadas à parte, conforme o número de mesas. A gente combina o valor com você depois do pedido." : placas > 2 ? "Para mais de 2 placas, pague os links de 2 e de 1 placa conforme a quantidade." : falta ? "Pagamento online em breve." : "Pagamento seguro pelo Mercado Pago. Faça os dois pagamentos para ativar o seu hub.";
   }
   function liga(a, url, rotulo) {
     a.textContent = rotulo;
