@@ -217,7 +217,8 @@ p{margin:0}
 .cor{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem 1rem;border-radius:999px;border:1px solid var(--linha);background:var(--painel);color:var(--mudo);font:600 .9rem var(--sans);cursor:pointer}
 .cor i{width:.95rem;height:.95rem;border-radius:50%;background:var(--c);box-shadow:0 0 0 1px rgba(255,255,255,.35)}
 .cor[aria-pressed="true"]{color:var(--tinta);background:var(--texto);border-color:var(--texto)}
-.foto-placa{width:min(19rem,100%);aspect-ratio:3/4;border-radius:1.4rem;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.foto-placa{width:min(21rem,100%);aspect-ratio:1;border-radius:1.4rem;overflow:hidden;background:#1a1d24;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+.foto-placa img{transition:opacity .25s}
 .foto-placa img{width:100%;height:100%;object-fit:cover;display:block}
 .pg{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:.8rem;padding:2rem 1.6rem 1.6rem;text-align:center;color:#fff;background:var(--fundo);border:1px solid rgba(255,255,255,.14);border-radius:inherit;transition:background .35s}
 .pg .est{color:#FBBC04;font-size:1.5rem;letter-spacing:.18em}
@@ -329,7 +330,7 @@ p{margin:0}
         <ul class="lista">
           <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Chip NFC e QR code na mesma placa, funciona em qualquer celular</span></li>
           <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Abre direto a avaliação do seu perfil, sem procurar no Google</span></li>
-          <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Disponível em preto e em azul</span></li>
+          <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Disponível em azul e em preto</span></li>
           <li><svg aria-hidden="true"><use href="#ok"/></svg><span>Pode ser comprada junto com o hub ou sozinha</span></li>
         </ul>
         <p class="preco-p"><b>R$ 79,90</b> cada · <b>2 por R$ 139,90</b></p>
@@ -457,8 +458,8 @@ const COMPARATIVO = [
 ];
 /* Fotos da placa de avaliação. Vazio = mostra a ilustração. Ex.: preto: "img/placa-preta.jpg" */
 const PLACA_CORES = [
-  { id: "preto", nome: "Preto", cor: "#0d0f13", fundo: "linear-gradient(160deg,#20242c,#08090c)", foto: "" },
-  { id: "azul", nome: "Azul", cor: "#1d4fd8", fundo: "linear-gradient(160deg,#2f6bf0,#163a9e)", foto: "" },
+  { id: "azul", nome: "Azul", cor: "#1d4fd8", fundo: "linear-gradient(160deg,#2f6bf0,#163a9e)", foto: "img/placa-azul.jpg" },
+  { id: "preto", nome: "Preto", cor: "#2b2d31", fundo: "linear-gradient(160deg,#20242c,#08090c)", foto: "img/placa-preta.jpg" },
 ];
 const DEMOS = [
   { id: "jhows", nome: "Barbearias", cor: "#e0312e", arquivo: "demos/jhows.html", titulo: "Jhow's Barbearia", real: true,
@@ -530,6 +531,7 @@ const DEMOS = [
   }
   $("#cores").innerHTML = PLACA_CORES.map(c => `<button type="button" class="cor" data-cor="${c.id}" style="--c:${c.cor}"><i></i>${esc(c.nome)}</button>`).join("");
   $("#cores").addEventListener("click", e => { const b = e.target.closest(".cor"); if (b) placa(b.dataset.cor); });
+  PLACA_CORES.forEach(c => { if (c.foto) new Image().src = c.foto; });
   placa(PLACA_CORES[0].id);
 
   /* Demos */
