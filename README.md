@@ -1,10 +1,51 @@
-# Nodus
+# Nodus · hubs digitais NFC para comércios locais
 
-Site e hubs NFC da Nodus.
+O cliente aproxima o celular de uma placa NFC no balcão ou na mesa e abre uma página com tudo do estabelecimento: cardápio com vídeo dos pratos, agendamento, catálogo, Wi‑Fi, WhatsApp, Instagram e avaliação no Google. Não é preciso baixar nenhum aplicativo.
 
-- Site: `/`
-- Boteco Tijuca: `/tijuca/`
-- Jhow's Barbearia: `/jhows/`
-- Demonstrações: `/demos/`
+**Site e demonstrações ao vivo:** https://arthurfuturedev.github.io/nodus/
 
-Os hubs são gerados pelo `gerar.py` (pasta modelo, fora deste repositório).
+![Site da Nodus](docs/site.jpg)
+
+## Hubs
+
+| Boteco Tijuca (cliente) | Cardápio em vídeo | Jhow's Barbearia (cliente) | Agendamento |
+|---|---|---|---|
+| ![](docs/tijuca.jpg) | ![](docs/tijuca-cardapio.jpg) | ![](docs/jhows.jpg) | ![](docs/jhows-agenda.jpg) |
+
+| Restaurante (demo) | Oficina (demo) | Loja de roupas (demo) |
+|---|---|---|
+| ![](docs/restaurante.jpg) | ![](docs/oficina.jpg) | ![](docs/loja.jpg) |
+
+Abrir direto: [Tijuca](https://arthurfuturedev.github.io/nodus/demos/tijuca.html?mesa=08) · [Jhow's](https://arthurfuturedev.github.io/nodus/demos/jhows.html) · [Cantina Bella Nonna](https://arthurfuturedev.github.io/nodus/demos/restaurante.html?mesa=12) · [Garage 77](https://arthurfuturedev.github.io/nodus/demos/oficina.html) · [Ateliê Lis](https://arthurfuturedev.github.io/nodus/demos/loja.html)
+
+O Boteco Tijuca e a Jhow's Barbearia são clientes reais e o uso foi autorizado por eles. Os vídeos do cardápio do Tijuca foram cedidos pelo restaurante Backyard para demonstração. As demais empresas são fictícias.
+
+## O que cada hub faz
+
+- **Um modelo, vários negócios:** todos os hubs saem do mesmo motor (`hub/base.html`). Cada cliente é só uma configuração em JSON com cores, fontes, logo, botões e módulos.
+- **Cardápio digital:** categorias, carrinho, vídeo de cada prato num player embutido (com navegação entre pratos e gesto de arrastar), pedido pelo WhatsApp e número da mesa vindo da placa (`?mesa=08`).
+- **Agendamento:** escolha de serviços (mais de um), profissional, dia e horário. Respeita o expediente de cada dia, soma tempo e valor e envia o resumo pelo WhatsApp.
+- **Catálogo:** filtros por categoria, ficha do produto e ilustrações vetoriais geradas por código.
+- **Wi‑Fi:** mostra a rede e copia a senha com um toque.
+- **Clube de assinatura:** planos mensais com botão para assinar.
+- **Relatório de acessos:** registra aberturas por NFC ou QR code (`?o=nfc` / `?o=qr`), mesa, cliques em cada botão, vídeos vistos, pedidos e agendamentos, via Google Analytics 4 ou Umami. Nenhum dado pessoal é coletado.
+- **Funciona em qualquer celular:** sem dependências, um único arquivo HTML com imagens embutidas e aviso de falta de conexão.
+
+## Como gerar os hubs
+
+```bash
+python3 hub/gerar.py . demos
+```
+
+- `hub/base.html`: motor do hub (HTML, CSS e JavaScript puros).
+- `hub/gerar.py`: configuração dos clientes reais e geração dos arquivos; o bloco `ANALYTICS` recebe o código do relatório de cada cliente.
+- `hub/ficticias.py`: configuração das demonstrações.
+- `hub/dados.json`: cardápios, serviços e catálogo.
+
+## Tecnologias
+
+HTML, CSS e JavaScript sem frameworks · Python para gerar os arquivos · Playwright para os testes · NFC e QR code · Mercado Pago (assinaturas) · Google Analytics 4 / Umami · GitHub Pages
+
+---
+
+Feito por Arthur Rodrigues Oliveira e Keni.
