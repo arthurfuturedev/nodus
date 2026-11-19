@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TecLub Eng. Coelho · Troca de óleo e mecânica</title>
+<meta name="description" content="TecLub Engenheiro Coelho, Rede Tec-Lub 4 Irmãos: troca de óleo, filtros, fluidos e mecânica para carro, moto e caminhão. Agende pelo celular.">
+<meta name="theme-color" content="#09090b">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090b;--pn:#121215;--pn2:#1a1a1f;--ln:rgba(255,255,255,.09);--ln2:rgba(255,255,255,.16);--tx:#f4f4f5;--mu:#a1a1aa;--red:#e3131b;--red2:#9f0d13;--yel:#f5b301;--ok:#22c55e;
+  --disp:Anton,Impact,"Arial Narrow",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--r:1rem}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg);color-scheme:dark}
+body{min-height:100vh;background:var(--bg);color:var(--tx);font:400 1rem/1.5 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:calc(5.4rem + env(safe-area-inset-bottom))}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+a{color:inherit;text-decoration:none}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+svg.i{width:1.25rem;height:1.25rem;flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.app{max-width:30rem;margin:0 auto;position:relative}
+.mono{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yel)}
+.xadrez{height:.55rem;background:repeating-conic-gradient(#fff 0 25%,#0000 0 50%) 0 0/.55rem .55rem;opacity:.85}
+:focus-visible{outline:2px solid var(--yel);outline-offset:3px;border-radius:.4rem}
+
+/* Capa */
+.capa{position:relative;height:17.5rem;overflow:hidden;background:#000}
+.capa img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block;transform:scale(1.04);animation:respira 18s ease-in-out infinite alternate}
+@keyframes respira{to{transform:scale(1.12)}}
+.capa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(9,9,11,.15) 0%,rgba(9,9,11,0) 35%,rgba(9,9,11,.7) 72%,var(--bg) 100%)}
+.scan{position:absolute;inset:0;z-index:1;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px);pointer-events:none}
+.topo{position:absolute;z-index:2;top:max(.9rem,env(safe-area-inset-top));left:1rem;right:1rem;display:flex;justify-content:space-between;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .8rem;border-radius:99px;background:rgba(0,0,0,.55);border:1px solid var(--ln2);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:.8rem;font-weight:600}
+.dot{width:.5rem;height:.5rem;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:pulso 2s infinite}
+.dot.off{background:#f59e0b;animation:none}
+@keyframes pulso{70%{box-shadow:0 0 0 .5rem rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+
+.id{position:relative;z-index:3;margin-top:-4.6rem;padding:0 1.1rem;text-align:center}
+.logo{width:6.4rem;height:6.4rem;margin:0 auto;border-radius:50%;background:#000;padding:.2rem;box-shadow:0 0 0 2px var(--red),0 0 0 .5rem rgba(227,19,27,.18),0 0 2.4rem rgba(227,19,27,.55)}
+.logo img{width:100%;height:100%;border-radius:50%;display:block;object-fit:cover}
+h1{font:400 2.35rem/1 var(--disp);letter-spacing:.01em;text-transform:uppercase;margin-top:.9rem}
+h1 span{color:var(--red)}
+.id .mono{margin-top:.45rem;display:block}
+.lema{color:var(--mu);margin-top:.55rem;font-size:.98rem}
+
+/* Números */
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin:1.3rem 1rem 0}
+.num{padding:.8rem .5rem;border-radius:.9rem;background:var(--pn);border:1px solid var(--ln);text-align:center;position:relative;overflow:hidden}
+.num::before{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:linear-gradient(90deg,var(--red),transparent)}
+.num b{display:block;font:400 1.55rem/1 var(--disp);letter-spacing:.02em}
+.num b em{font-style:normal;color:var(--yel);font-size:1rem;margin-left:.15rem}
+.num small{display:block;margin-top:.35rem;font:700 .58rem/1.25 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
+
+/* Botões */
+.sec{padding:0 1rem;margin-top:1.4rem}
+.cta{position:relative;display:flex;align-items:center;gap:.9rem;width:100%;min-height:4.6rem;padding:.9rem 1.1rem;border-radius:var(--r);background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;text-align:left;box-shadow:0 12px 30px rgba(227,19,27,.35);overflow:hidden;clip-path:polygon(0 0,100% 0,100% 74%,96% 100%,0 100%)}
+.cta::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.22) 45%,transparent 60%);transform:translateX(-100%);animation:brilho 3.6s ease-in-out infinite}
+@keyframes brilho{55%,100%{transform:translateX(100%)}}
+.cta .ic{display:grid;place-items:center;width:2.7rem;height:2.7rem;border-radius:.75rem;background:rgba(0,0,0,.25)}
+.cta b{display:block;font:400 1.35rem/1.05 var(--disp);letter-spacing:.03em;text-transform:uppercase}
+.cta small{display:block;font-size:.82rem;opacity:.88;margin-top:.15rem}
+.cta .seta{margin-left:auto}
+.lista{display:grid;gap:.6rem;margin-top:.7rem}
+.btn{display:flex;align-items:center;gap:.85rem;width:100%;min-height:3.9rem;padding:.75rem 1rem;border-radius:var(--r);background:var(--pn);border:1px solid var(--ln);text-align:left;transition:border-color .2s,transform .15s}
+.btn:active{transform:scale(.985)}
+.btn:hover{border-color:var(--ln2)}
+.btn .ic{display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:.7rem;background:var(--pn2);color:var(--red)}
+.btn.wa .ic{color:#25d366}.btn.gg .ic{color:var(--yel)}
+.btn b{display:block;font-weight:650;font-size:1rem}
+.btn small{display:block;color:var(--mu);font-size:.82rem}
+.btn .fim{margin-left:auto;color:var(--mu)}
+.estr{color:var(--yel);letter-spacing:.1em;font-size:.85rem;margin-left:auto}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.duo .btn{min-height:3.4rem}
+
+/* Cartões */
+.card{margin-top:1rem;padding:1.15rem;border-radius:1.1rem;background:var(--pn);border:1px solid var(--ln)}
+.card-h{display:flex;align-items:center;gap:.75rem;margin-bottom:.9rem}
+.card-h .ic{display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:.7rem;background:rgba(227,19,27,.12);color:var(--red)}
+.card-h b{display:block;font:400 1.15rem/1.1 var(--disp);letter-spacing:.04em;text-transform:uppercase}
+.card-h small{display:block;color:var(--mu);font-size:.8rem}
+.hrs{display:grid;gap:.15rem;font-size:.92rem}
+.hrs div{display:flex;justify-content:space-between;padding:.45rem .6rem;border-radius:.5rem}
+.hrs div.hoje{background:rgba(245,179,1,.1);color:var(--yel);font-weight:600}
+.hrs span:last-child{font-family:var(--mono);font-size:.85rem}
+.end{color:var(--mu);font-size:.93rem;margin-bottom:.85rem}
+
+/* Calculadora */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.campo{display:grid;gap:.3rem}
+.campo span{font:700 .62rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+.campo.full{grid-column:1/-1}
+input,select,textarea{width:100%;min-height:3rem;padding:.7rem .85rem;border-radius:.75rem;border:1px solid var(--ln2);background:#0d0d10;font-size:1rem;appearance:none;-webkit-appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .7rem center;background-size:1.1rem;padding-right:2.2rem}
+textarea{min-height:5.5rem;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--yel);box-shadow:0 0 0 3px rgba(245,179,1,.15)}
+input::placeholder,textarea::placeholder{color:#62626b}
+.medidor{margin-top:1rem;padding:1rem;border-radius:.9rem;background:#0d0d10;border:1px solid var(--ln)}
+.barra{height:.6rem;border-radius:99px;background:#26262c;overflow:hidden;margin:.7rem 0 .55rem}
+.barra i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--ok),var(--yel) 70%,var(--red));transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.medidor b{font:400 1.35rem/1.1 var(--disp);letter-spacing:.03em}
+.medidor p{color:var(--mu);font-size:.86rem}
+.medidor.alerta b{color:var(--red)}
+.nota{color:#71717a;font-size:.75rem;margin-top:.7rem}
+
+/* Títulos de aba */
+.tt{padding:max(1.2rem,env(safe-area-inset-top)) 1rem 0}
+.tt h2{font:400 2.2rem/1 var(--disp);text-transform:uppercase;letter-spacing:.02em;margin-top:.35rem}
+.tt p{color:var(--mu);margin-top:.4rem;font-size:.95rem}
+
+/* Serviços */
+.filtros{display:flex;gap:.45rem;overflow-x:auto;padding:1rem 1rem .2rem;scrollbar-width:none}
+.filtros::-webkit-scrollbar{display:none}
+.fil{flex:none;padding:.5rem .9rem;border-radius:99px;border:1px solid var(--ln2);background:var(--pn);font-size:.85rem;font-weight:600;color:var(--mu)}
+.fil[aria-pressed="true"]{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.grupo{margin:1rem 1rem 0;border-radius:1.1rem;overflow:hidden;background:var(--pn);border:1px solid var(--ln)}
+.gfoto{position:relative;height:7.5rem;overflow:hidden}
+.gfoto img{width:100%;height:100%;object-fit:cover;display:block}
+.gfoto::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,9,11,.92),rgba(9,9,11,.35) 70%,rgba(9,9,11,.1))}
+.gfoto div{position:absolute;z-index:1;left:1rem;bottom:.85rem}
+.gfoto .mono{display:block}
+.gfoto b{font:400 1.5rem/1 var(--disp);text-transform:uppercase;letter-spacing:.03em}
+.svc{display:flex;gap:.8rem;align-items:center;padding:.9rem 1rem;border-top:1px solid var(--ln)}
+.svc .tx{flex:1;min-width:0}
+.svc b{display:block;font-weight:650;font-size:.97rem}
+.svc small{display:block;color:var(--mu);font-size:.82rem;line-height:1.4}
+.tag{display:inline-block;margin-top:.35rem;padding:.12rem .45rem;border-radius:.35rem;background:rgba(245,179,1,.12);color:var(--yel);font:700 .6rem var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.add{flex:none;display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:.75rem;border:1px solid var(--ln2);background:var(--pn2);color:var(--tx);transition:background .2s,color .2s}
+.add[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.sel-bar{position:fixed;z-index:30;left:50%;transform:translateX(-50%);bottom:calc(5.6rem + env(safe-area-inset-bottom));width:min(28rem,calc(100% - 2rem));display:flex;align-items:center;gap:.8rem;padding:.65rem .65rem .65rem 1rem;border-radius:1rem;background:rgba(20,20,24,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--ln2);box-shadow:0 18px 40px rgba(0,0,0,.6)}
+.sel-bar span{flex:1;font-size:.9rem}
+.sel-bar b{color:var(--yel)}
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3rem;padding:.7rem 1.15rem;border-radius:.8rem;font-weight:700;font-size:.95rem}
+.bt.p{background:var(--red);color:#fff}
+.bt.s{border:1px solid var(--ln2);background:var(--pn)}
+.bt.wa{background:#25d366;color:#05210f}
+.bt[disabled]{opacity:.45}
+
+/* Agendar */
+.passos{display:flex;gap:.35rem;padding:1rem 1rem 0}
+.passos i{flex:1;height:.3rem;border-radius:99px;background:#26262c;transition:background .3s}
+.passos i.on{background:var(--red)}
+.passo-t{display:flex;justify-content:space-between;align-items:baseline;padding:.75rem 1rem 0}
+.passo-t b{font:400 1.45rem/1 var(--disp);text-transform:uppercase;letter-spacing:.03em}
+.form{padding:0 1rem}
+.form .card{margin-top:.9rem}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:.45rem}
+.seg button{min-height:4.2rem;border-radius:.85rem;border:1px solid var(--ln2);background:#0d0d10;display:grid;place-items:center;gap:.25rem;padding:.55rem;font-size:.82rem;font-weight:600;color:var(--mu)}
+.seg button svg.i{width:1.6rem;height:1.6rem}
+.seg button[aria-pressed="true"]{border-color:var(--red);background:rgba(227,19,27,.12);color:var(--tx)}
+.seg2{display:flex;flex-wrap:wrap;gap:.4rem}
+.op{padding:.55rem .85rem;border-radius:.7rem;border:1px solid var(--ln2);background:#0d0d10;font-size:.88rem;font-weight:600;color:var(--mu)}
+.op[aria-pressed="true"]{border-color:var(--yel);background:rgba(245,179,1,.1);color:var(--tx)}
+.placa{font:700 1.35rem var(--mono);letter-spacing:.18em;text-transform:uppercase;text-align:center;background:#f4f4f5;color:#111;border:2px solid #1d4ed8;border-top-width:.7rem;border-radius:.5rem}
+.placa::placeholder{color:#9ca3af}
+.chk{display:flex;align-items:center;gap:.7rem;margin-top:.9rem;font-size:.9rem;color:var(--mu)}
+.chk input{width:1.25rem;height:1.25rem;min-height:0;padding:0;border-radius:.35rem;accent-color:var(--red);appearance:auto;-webkit-appearance:checkbox}
+.meus{display:flex;gap:.45rem;overflow-x:auto;padding-bottom:.2rem}
+.meu{flex:none;display:flex;align-items:center;gap:.5rem;padding:.55rem .8rem;border-radius:.75rem;border:1px dashed var(--ln2);background:#0d0d10;font-size:.85rem}
+.meu b{font-family:var(--mono);font-size:.78rem;color:var(--yel)}
+.ck{display:flex;align-items:center;gap:.75rem;padding:.75rem .2rem;border-top:1px solid var(--ln);text-align:left;width:100%}
+.ck:first-of-type{border-top:0}
+.ck .bx{display:grid;place-items:center;flex:none;width:1.5rem;height:1.5rem;border-radius:.45rem;border:1.5px solid var(--ln2);color:transparent}
+.ck[aria-pressed="true"] .bx{background:var(--red);border-color:var(--red);color:#fff}
+.ck .bx svg{width:.95rem;height:.95rem;stroke-width:3}
+.ck b{font-weight:600;font-size:.95rem}
+.ck small{display:block;color:var(--mu);font-size:.78rem}
+.gl{font:700 .62rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--yel);margin:1rem 0 .2rem}
+.gl:first-child{margin-top:0}
+.dias{display:flex;gap:.45rem;overflow-x:auto;padding-bottom:.3rem;scrollbar-width:none}
+.dias::-webkit-scrollbar{display:none}
+.dia{flex:none;width:4rem;padding:.6rem .2rem;border-radius:.85rem;border:1px solid var(--ln2);background:#0d0d10;text-align:center}
+.dia small{display:block;font:700 .6rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
+.dia b{display:block;font:400 1.5rem/1.1 var(--disp)}
+.dia[aria-pressed="true"]{border-color:var(--red);background:var(--red);color:#fff}
+.dia[aria-pressed="true"] small{color:#ffe1e1}
+.horas{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;margin-top:.9rem}
+.hora{min-height:2.8rem;border-radius:.7rem;border:1px solid var(--ln2);background:#0d0d10;font:700 .9rem var(--mono)}
+.hora[aria-pressed="true"]{border-color:var(--yel);background:var(--yel);color:#111}
+.hora[disabled]{opacity:.28;text-decoration:line-through}
+.navf{position:sticky;bottom:calc(5.4rem + env(safe-area-inset-bottom));z-index:20;display:flex;gap:.6rem;padding:.8rem 1rem;margin-top:1rem;background:linear-gradient(180deg,rgba(9,9,11,0),var(--bg) 35%)}
+.navf .bt{flex:1}
+.erro{color:#fca5a5;font-size:.85rem;margin-top:.6rem;min-height:1.2em}
+.os{margin-top:.9rem;border-radius:1.1rem;overflow:hidden;background:#f4f4f5;color:#18181b}
+.os-h{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.1rem;background:#18181b;color:#fff}
+.os-h b{font:400 1.2rem var(--disp);letter-spacing:.05em}
+.os-h span{font:700 .72rem var(--mono);color:var(--yel);letter-spacing:.08em}
+.os dl{display:grid;grid-template-columns:auto 1fr;gap:.45rem .9rem;padding:1rem 1.1rem;font-size:.9rem}
+.os dt{font:700 .62rem/1.8 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#71717a}
+.os dd{font-weight:600;margin:0}
+.os .corte{border-top:2px dashed #d4d4d8;padding:.8rem 1.1rem;font-size:.8rem;color:#52525b}
+
+/* Vídeos */
+.vids{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;padding:1rem}
+.vid{position:relative;aspect-ratio:9/14;border-radius:1rem;overflow:hidden;background:var(--pn);border:1px solid var(--ln);text-align:left}
+.vid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.vid:hover img{transform:scale(1.05)}
+.vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.88))}
+.vid .play{position:absolute;z-index:1;top:.6rem;right:.6rem;display:grid;place-items:center;width:2.2rem;height:2.2rem;border-radius:50%;background:rgba(227,19,27,.9);color:#fff}
+.vid .play svg{width:1rem;height:1rem;fill:currentColor;stroke:none}
+.vid b{position:absolute;z-index:1;left:.75rem;right:.75rem;bottom:.7rem;font-size:.88rem;line-height:1.25;font-weight:700}
+
+/* Folha (vídeo) */
+.folha{position:fixed;inset:0;z-index:60;display:flex;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.folha-c{width:min(30rem,100%);max-height:94vh;overflow:auto;border-radius:1.3rem 1.3rem 0 0;background:var(--pn);border:1px solid var(--ln2);padding:1rem 1rem calc(1rem + env(safe-area-inset-bottom));animation:sobe .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes sobe{from{transform:translateY(40%);opacity:0}}
+.folha-h{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.8rem}
+.folha-h b{font-weight:700}
+.x{display:grid;place-items:center;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--pn2)}
+.ifr{width:100%;height:min(70vh,40rem);border:0;border-radius:.9rem;background:#000;display:block}
+.folha .bt{width:100%;margin-top:.8rem}
+
+/* Barra de abas */
+.abas{position:fixed;z-index:40;left:0;right:0;bottom:0;padding:.45rem .6rem calc(.45rem + env(safe-area-inset-bottom));background:rgba(12,12,14,.9);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid var(--ln)}
+.abas nav{max-width:30rem;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.aba{display:grid;justify-items:center;gap:.2rem;padding:.45rem 0;border-radius:.8rem;font-size:.7rem;font-weight:600;color:#8b8b94}
+.aba svg.i{width:1.45rem;height:1.45rem}
+.aba[aria-current="page"]{color:var(--tx)}
+.aba[aria-current="page"] svg.i{color:var(--red)}
+.aba.ag .bolha{display:grid;place-items:center;width:3.2rem;height:3.2rem;margin-top:-1.6rem;border-radius:1rem;background:linear-gradient(135deg,var(--red),var(--red2));color:#fff;box-shadow:0 10px 24px rgba(227,19,27,.45),0 0 0 .3rem var(--bg)}
+.aba.ag .bolha svg.i{color:#fff}
+
+.rod{text-align:center;padding:2rem 1rem 1rem;color:#71717a;font:700 .62rem var(--mono);letter-spacing:.24em;text-transform:uppercase}
+.rod b{color:var(--red)}
+.vista{animation:entra .35s ease}
+@keyframes entra{from{opacity:0;transform:translateY(.5rem)}}
+#toast{position:fixed;z-index:80;left:50%;bottom:calc(6.2rem + env(safe-area-inset-bottom));transform:translate(-50%,1rem);opacity:0;pointer-events:none;width:max-content;max-width:calc(100% - 2rem);padding:.75rem 1rem;border-radius:.8rem;background:#f4f4f5;color:#111;font-weight:600;font-size:.9rem;box-shadow:0 12px 30px rgba(0,0,0,.5);transition:.3s}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+#net{position:fixed;z-index:90;top:0;left:0;right:0;padding:.55rem 1rem;background:#b45309;color:#fff;text-align:center;font-size:.85rem;font-weight:600;transform:translateY(-100%);transition:.3s}
+#net.on{transform:none}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="net" role="status">Sem conexão. Os links voltam a funcionar quando a internet voltar.</div>
+<div class="app">
+
+<!-- ═════ INÍCIO ═════ -->
+<section class="vista" id="v-inicio" aria-label="Início">
+  <div class="capa">
+    <img src="{{IMG:capa.jpg}}" alt="Fachada da Rede Tec-Lub 4 Irmãos à noite">
+    <div class="scan"></div>
+    <div class="topo"><span class="pill" id="status"><i class="dot"></i>Carregando…</span><span class="pill">★ 4,9 Google</span></div>
+  </div>
+  <div class="id">
+    <div class="logo"><img src="{{IMG:logo.jpg}}" alt="Logo Rede Tec-Lub 4 Irmãos"></div>
+    <h1>TecLub <span>Eng. Coelho</span></h1>
+    <span class="mono">Rede Tec-Lub 4 Irmãos · Troca de óleo express</span>
+    <p class="lema">Seu carro revisado no mesmo dia. Carro, moto e caminhão.</p>
+  </div>
+  <div class="nums">
+    <div class="num"><b>4,9<em>★</em></b><small>Nota no<br>Google</small></div>
+    <div class="num"><b>1 dia</b><small>Carro revisado<br>no mesmo dia</small></div>
+    <div class="num"><b>+12</b><small>Lojas na<br>rede em SP</small></div>
+  </div>
+  <div class="sec">
+    <a class="cta" href="#agendar" data-ev="abriu_agenda"><span class="ic"><svg class="i"><use href="#i-cal"/></svg></span><span><b>Agendar serviço</b><small>Informe o veículo e escolha o horário</small></span><svg class="i seta"><use href="#i-chev"/></svg></a>
+    <div class="lista">
+      <a class="btn" href="#servicos"><span class="ic"><svg class="i"><use href="#i-wrench"/></svg></span><span><b>Serviços</b><small>Óleo, filtros, fluidos e mecânica</small></span><svg class="i fim"><use href="#i-chev"/></svg></a>
+      <a class="btn wa" id="bWa" target="_blank" rel="noopener noreferrer" data-ev="clique_whatsapp"><span class="ic"><svg class="i"><use href="#i-wa"/></svg></span><span><b>WhatsApp</b><small>Orçamento e dúvidas</small></span><svg class="i fim"><use href="#i-ext"/></svg></a>
+      <a class="btn gg" id="bGoogle" target="_blank" rel="noopener noreferrer" data-ev="clique_google"><span class="ic"><svg class="i"><use href="#i-star"/></svg></span><span><b>Avalie no Google</b><small>Leva menos de 1 minuto</small></span><span class="estr" aria-hidden="true">★★★★★</span></a>
+      <a class="btn" id="bIg" target="_blank" rel="noopener noreferrer" data-ev="clique_instagram"><span class="ic"><svg class="i"><use href="#i-ig"/></svg></span><span><b>Instagram</b><small>@teclub4irmaosengenheirocoelho</small></span><svg class="i fim"><use href="#i-ext"/></svg></a>
+      <a class="btn" href="#videos"><span class="ic"><svg class="i"><use href="#i-play"/></svg></span><span><b>Vídeos da oficina</b><small>Veja o serviço sendo feito</small></span><svg class="i fim"><use href="#i-chev"/></svg></a>
+      <div class="duo">
+        <a class="btn" id="bTel" data-ev="clique_ligar"><span class="ic"><svg class="i"><use href="#i-tel"/></svg></span><span><b>Ligar</b></span></a>
+        <a class="btn" id="bSite" target="_blank" rel="noopener noreferrer" data-ev="clique_site"><span class="ic"><svg class="i"><use href="#i-globe"/></svg></span><span><b>Site</b></span></a>
+      </div>
+    </div>
+
+    <section class="card" aria-labelledby="calcT">
+      <div class="card-h"><span class="ic"><svg class="i"><use href="#i-drop"/></svg></span><div><b id="calcT">Quando trocar o óleo?</b><small>Calcule a sua próxima troca</small></div></div>
+      <div class="calc">
+        <label class="campo"><span>Km na última troca</span><input id="cK1" inputmode="numeric" placeholder="Ex.: 45.000"></label>
+        <label class="campo"><span>Km atual</span><input id="cK2" inputmode="numeric" placeholder="Ex.: 49.200"></label>
+        <label class="campo"><span>Tipo de óleo</span><select id="cTipo"><option value="5000">Mineral</option><option value="7500">Semissintético</option><option value="10000" selected>Sintético</option></select></label>
+        <label class="campo"><span>Data da troca</span><input id="cData" type="date"></label>
+      </div>
+      <div class="medidor" id="cRes" hidden aria-live="polite"><b id="cTit"></b><div class="barra"><i id="cBar"></i></div><p id="cTx"></p></div>
+      <button class="bt p" id="cAg" type="button" style="width:100%;margin-top:.9rem" hidden>Agendar troca de óleo</button>
+      <p class="nota">Estimativa por quilometragem ou 6 meses, o que vier primeiro. Siga o manual do veículo e a orientação da TecLub.</p>
+    </section>
+
+    <section class="card" aria-labelledby="ondeT">
+      <div class="card-h"><span class="ic"><svg class="i"><use href="#i-pin"/></svg></span><div><b id="ondeT">Onde estamos</b><small>Jardim América · Engenheiro Coelho</small></div></div>
+      <p class="end" id="end"></p>
+      <div class="hrs" id="hrs"></div>
+      <div class="duo" style="margin-top:.9rem">
+        <a class="bt s" id="bMaps" target="_blank" rel="noopener noreferrer" data-ev="clique_mapa"><svg class="i"><use href="#i-pin"/></svg>Google Maps</a>
+        <a class="bt s" id="bWaze" target="_blank" rel="noopener noreferrer" data-ev="clique_waze"><svg class="i"><use href="#i-nav"/></svg>Waze</a>
+      </div>
+    </section>
+  </div>
+  <div class="xadrez" style="margin-top:2rem"></div>
+</section>
+
+<!-- ═════ SERVIÇOS ═════ -->
+<section class="vista" id="v-servicos" aria-label="Serviços" hidden>
+  <div class="tt"><span class="mono">O que sai na OS</span><h2>Serviços</h2><p>Toque no <b>+</b> para montar o seu agendamento. Valores pelo WhatsApp, conforme o veículo.</p></div>
+  <div class="filtros" id="filtros" role="group" aria-label="Filtrar serviços"></div>
+  <div id="grupos"></div>
+  <div class="sec"><a class="btn wa" id="bWa2" target="_blank" rel="noopener noreferrer" data-ev="clique_whatsapp"><span class="ic"><svg class="i"><use href="#i-wa"/></svg></span><span><b>Não achou o serviço?</b><small>Pergunte no WhatsApp</small></span><svg class="i fim"><use href="#i-ext"/></svg></a></div>
+</section>
+
+<!-- ═════ AGENDAR ═════ -->
+<section class="vista" id="v-agendar" aria-label="Agendar" hidden>
+  <div class="tt"><span class="mono">Pré-ordem de serviço</span><h2>Agendar</h2><p>Em 4 passos. A TecLub confirma o horário pelo WhatsApp.</p></div>
+  <div class="passos" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="passo-t"><b id="pT"></b><span class="mono" id="pN"></span></div>
+  <div class="form" id="pBox"></div>
+  <p class="erro form" id="pErro" role="alert"></p>
+  <div class="navf"><button class="bt s" id="pVolta" type="button">Voltar</button><button class="bt p" id="pVai" type="button">Continuar</button></div>
+</section>
+
+<!-- ═════ VÍDEOS ═════ -->
+<section class="vista" id="v-videos" aria-label="Vídeos" hidden>
+  <div class="tt"><span class="mono">Motor aberto, sem segredo</span><h2>Na oficina</h2><p>Vídeos do nosso Instagram mostrando o serviço de verdade.</p></div>
+  <div class="vids" id="vids"></div>
+  <div class="sec"><a class="btn" id="bIg2" target="_blank" rel="noopener noreferrer" data-ev="clique_instagram"><span class="ic"><svg class="i"><use href="#i-ig"/></svg></span><span><b>Ver todos no Instagram</b><small>Mais de 590 publicações</small></span><svg class="i fim"><use href="#i-ext"/></svg></a></div>
+</section>
+
+<p class="rod">Desenvolvido por <b>Nodus</b></p>
+</div>
+
+<div class="sel-bar" id="selBar" hidden><span><b id="selN">0</b> serviço(s) selecionado(s)</span><a class="bt p" href="#agendar">Agendar</a></div>
+
+<div class="abas"><nav aria-label="Navegação">
+  <a class="aba" href="#inicio" data-aba="inicio"><svg class="i"><use href="#i-home"/></svg>Início</a>
+  <a class="aba" href="#servicos" data-aba="servicos"><svg class="i"><use href="#i-wrench"/></svg>Serviços</a>
+  <a class="aba ag" href="#agendar" data-aba="agendar"><span class="bolha"><svg class="i"><use href="#i-cal"/></svg></span>Agendar</a>
+  <a class="aba" href="#videos" data-aba="videos"><svg class="i"><use href="#i-play"/></svg>Vídeos</a>
+</nav></div>
+
+<div class="folha" id="folha" hidden role="dialog" aria-modal="true" aria-labelledby="folhaT"><div class="folha-c">
+  <div class="folha-h"><b id="folhaT"></b><button class="x" id="folhaX" type="button" aria-label="Fechar"><svg class="i"><use href="#i-x"/></svg></button></div>
+  <div id="folhaC"></div>
+</div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8 14h3"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8Z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4Z"/><path d="M9 8.6c0 3.3 3 6.3 6.4 6.4l1.2-1.5-2-1-1 .8a4.6 4.6 0 0 1-2.4-2.4l.8-1-1-2Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 9 5 3-5 3Z"/></symbol>
+  <symbol id="i-tri" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5Z"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.8 6.8l1.4-2.2 4.3 1.7V19a1.9 1.9 0 0 1-2 2A16.5 16.5 0 0 1 3 5.5a1.9 1.9 0 0 1 2-2Z"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5s6 6.4 6 10.5a6 6 0 0 1-12 0c0-4.1 6-10.5 6-10.5Z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="m3 11 18-8-8 18-2-8Z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16.5h14M3.5 16.5v-3.2l2-5.1a2 2 0 0 1 1.9-1.2h9.2a2 2 0 0 1 1.9 1.2l2 5.1v3.2"/><path d="M3.5 13h17"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/></symbol>
+  <symbol id="i-moto" viewBox="0 0 24 24"><circle cx="5.5" cy="16" r="3.2"/><circle cx="18.5" cy="16" r="3.2"/><path d="M5.5 16 9 10h5l4.5 6M14 10l-1.5-3H10M9 10l3 6h6.5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6h11v10h-11zM13.5 9.5h4l3 3.5v3h-7"/><circle cx="6.5" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></symbol>
+</svg>
+
+<script>
+/* ═══ Dados da TecLub Engenheiro Coelho (do site oficial, Instagram e Google) ═══ */
+const T = {
+  nome: "TecLub Eng. Coelho",
+  whatsapp: "5519987190610", telefone: "+5519987190610",
+  instagram: "https://www.instagram.com/teclub4irmaosengenheirocoelho/",
+  site: "https://teclub4irmaosengcoelho.com.br/",
+  google: "https://search.google.com/local/writereview?placeid=ChIJXYa7VXOLyJQR7lU5lOuVnlY",
+  endereco: "R. Amadeu Jorge Teresani, 256 · Jardim América, Engenheiro Coelho - SP",
+  maps: "https://www.google.com/maps/search/?api=1&query=TEC+LUB+4+IRM%C3%83OS+R.+Amadeu+Jorge+Teresani+256+Engenheiro+Coelho",
+  waze: "https://waze.com/ul?ll=-22.4882399,-47.2102028&navigate=yes",
+  /* 0 = domingo. [abre, fecha] em horas */
+  expediente: { 1: [7.5, 18], 2: [7.5, 18], 3: [7.5, 18], 4: [7.5, 18], 5: [7.5, 18], 6: [7.5, 16] },
+  ultimoHorario: { semana: 17, sabado: 15 },
+  analytics: { ga: "", umami: "" },
+};
+const GRUPOS = [
+  { id: "oleo", nome: "Óleo e fluidos", foto: "{{IMG:s-oleo.jpg}}", itens: [
+    { n: "Troca de óleo do motor", d: "Óleo de linha conhecida e filtro novo. Carro revisado no mesmo dia.", tag: "Mesmo dia" },
+    { n: "Óleo do câmbio automático", d: "Troca feita na máquina, com o óleo certo para o seu câmbio." },
+    { n: "Óleo do câmbio manual", d: "Óleo especificado pelo fabricante do veículo." },
+    { n: "Fluido de freio", d: "Troca e conferência do nível para frear com segurança." },
+    { n: "Fluido da direção", d: "Nível e troca do fluido da direção hidráulica." },
+    { n: "Aditivo do radiador", d: "Arrefecimento conferido para o motor não esquentar." },
+  ]},
+  { id: "filtros", nome: "Filtros", foto: "{{IMG:s-filtros.jpg}}", itens: [
+    { n: "Filtro de óleo", d: "Trocado junto com o óleo do motor." },
+    { n: "Filtro de ar do motor", d: "Motor respirando melhor e gastando menos." },
+    { n: "Filtro do ar-condicionado", d: "Ar mais limpo dentro do carro, sem cheiro ruim." },
+    { n: "Filtro de combustível e diesel", d: "Combustível limpo chegando ao motor." },
+  ]},
+  { id: "mecanica", nome: "Mecânica", foto: "{{IMG:s-elevador.jpg}}", itens: [
+    { n: "Revisão preventiva", d: "Checagem geral para você sair sabendo o estado do veículo." },
+    { n: "Freios", d: "Pastilhas, discos e pinças revisados com peças de qualidade." },
+    { n: "Direção e suspensão", d: "Componentes revisados para o carro não puxar nem bater." },
+    { n: "Motor", d: "Diagnóstico e manutenção do motor." },
+    { n: "Câmbio", d: "Manutenção de câmbio manual e automático." },
+  ]},
+  { id: "pesada", nome: "Linha pesada e motos", foto: "{{IMG:s-pesada.jpg}}", itens: [
+    { n: "Caminhões, vans e utilitários", d: "Óleo e manutenção da linha pesada sem sair da cidade.", tag: "Linha pesada" },
+    { n: "Motos", d: "Troca de óleo e filtros para a sua moto." },
+    { n: "Carros híbridos", d: "Troca de óleo e revisão de modelos híbridos." },
+  ]},
+];
+const VIDEOS = [
+  { c: "Df4qVUvR5wH", t: "Será que estava na hora de trocar esse óleo?", img: "{{IMG:v-Df4qVUvR5wH.jpg}}" },
+  { c: "Dfz847KD_dM", t: "Óleo do câmbio automático do HB20", img: "{{IMG:v-Dfz847KD_dM.jpg}}" },
+  { c: "Df2Av3ERCsI", t: "Corolla Híbrido no elevador", img: "{{IMG:v-Df2Av3ERCsI.jpg}}" },
+  { c: "Df0Ki5agSN2", t: "Manutenção da Kombi aqui na TecLub", img: "{{IMG:v-Df0Ki5agSN2.jpg}}" },
+  { c: "Df48EmRCFR2", t: "Filtro de ar-condicionado também se troca", img: "{{IMG:v-Df48EmRCFR2.jpg}}" },
+  { c: "Df2yypxEqyo", t: "Filtro do diesel da Renault Master", img: "{{IMG:v-Df2yypxEqyo.jpg}}" },
+  { c: "DfzvKk1CrfZ", t: "Câmbio conectado à máquina de troca", img: "{{IMG:v-DfzvKk1CrfZ.jpg}}" },
+];
+const MARCAS = {
+  carro: ["Fiat", "Volkswagen", "Chevrolet", "Toyota", "Hyundai", "Honda", "Renault", "Jeep", "Ford", "Nissan", "Peugeot", "Citroën", "BYD", "Caoa Chery", "Mitsubishi", "Kia", "Mercedes-Benz", "BMW", "Audi", "Volvo"],
+  moto: ["Honda", "Yamaha", "Suzuki", "Kawasaki", "BMW", "Triumph", "Royal Enfield", "Shineray", "Haojue"],
+  pesado: ["Mercedes-Benz", "Volkswagen", "Volvo", "Scania", "Iveco", "Ford", "Renault", "Fiat", "DAF", "Hyundai"],
+};
+
+(() => {
+"use strict";
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const ic = (n, cl = "") => `<svg class="i ${cl}"><use href="#i-${n}"/></svg>`;
+const wa = t => `https://wa.me/${T.whatsapp}?text=${encodeURIComponent(t)}`;
+const fmtKm = v => v ? Number(v).toLocaleString("pt-BR") : "";
+const soNum = v => String(v || "").replace(/\D/g, "");
+const store = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
+
+/* Relatório de acessos (?o=nfc / ?o=qr) */
+let origem = "link"; try { const o = new URLSearchParams(location.search).get("o") || ""; if (/^(nfc|qr|insta|link)$/.test(o)) origem = o; } catch (e) {}
+const AN = T.analytics || {};
+if (AN.ga) { window.dataLayer = window.dataLayer || []; window.gtag = function () { dataLayer.push(arguments); }; gtag("js", new Date()); gtag("config", AN.ga, { cliente: T.nome, origem }); const g = document.createElement("script"); g.async = true; g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(AN.ga); document.head.appendChild(g); }
+if (AN.umami) { const u = document.createElement("script"); u.defer = true; u.src = "https://cloud.umami.is/script.js"; u.dataset.websiteId = AN.umami; document.head.appendChild(u); }
+function track(ev, d) { const x = Object.assign({ cliente: T.nome, origem }, d || {}); try { if (window.gtag && AN.ga) gtag("event", ev, x); } catch (e) {} try { if (window.umami && umami.track) umami.track(ev, x); } catch (e) {} }
+addEventListener("load", () => setTimeout(() => track("abriu_hub"), 600));
+
+let tt; function toast(m) { const t = $("#toast"); t.textContent = m; t.className = "on"; clearTimeout(tt); tt = setTimeout(() => t.className = "", 3400); }
+const rede = () => $("#net").classList.toggle("on", !navigator.onLine);
+addEventListener("online", () => { rede(); toast("Conexão restabelecida."); }); addEventListener("offline", rede); rede();
+document.addEventListener("click", e => { const a = e.target.closest("[data-ev]"); if (a) track(a.dataset.ev); const l = e.target.closest("a[target]"); if (l && !navigator.onLine) { e.preventDefault(); toast("Você está sem conexão. Tente de novo em instantes."); } });
+
+/* Links */
+const msgPadrao = "Olá, TecLub! Vim pelo hub e gostaria de um orçamento.";
+$("#bWa").href = $("#bWa2").href = wa(msgPadrao);
+$("#bGoogle").href = T.google; $("#bIg").href = $("#bIg2").href = T.instagram; $("#bSite").href = T.site;
+$("#bTel").href = "tel:" + T.telefone; $("#bMaps").href = T.maps; $("#bWaze").href = T.waze;
+$("#end").textContent = T.endereco;
+
+/* Aberto agora */
+const DIAS = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+const hh = h => `${String(Math.floor(h)).padStart(2, "0")}:${h % 1 ? "30" : "00"}`;
+function status() {
+  const n = new Date(), d = n.getDay(), h = n.getHours() + n.getMinutes() / 60, e = T.expediente[d];
+  if (e && h >= e[0] && h < e[1]) return `<i class="dot"></i>Aberto · fecha às ${hh(e[1])}`;
+  for (let k = 0; k < 7; k++) { const dd = (d + k) % 7, ee = T.expediente[dd]; if (!ee) continue; if (k === 0 && h >= ee[0]) continue; return `<i class="dot off"></i>Fechado · abre ${k === 0 ? "hoje" : k === 1 ? "amanhã" : DIAS[dd].toLowerCase()} às ${hh(ee[0])}`; }
+  return `<i class="dot off"></i>Fechado`;
+}
+$("#status").innerHTML = status();
+const hoje = new Date().getDay();
+$("#hrs").innerHTML = [[1, "Segunda a sexta", 1], [6, "Sábado", 6], [0, "Domingo", 0]].map(([d, rot]) => {
+  const e = T.expediente[d], on = d === 0 ? hoje === 0 : d === 6 ? hoje === 6 : hoje >= 1 && hoje <= 5;
+  return `<div class="${on ? "hoje" : ""}"><span>${rot}${on ? " · hoje" : ""}</span><span>${e ? hh(e[0]) + " – " + hh(e[1]) : "Fechado"}</span></div>`;
+}).join("");
+
+/* ═══ Calculadora da troca de óleo ═══ */
+const cK1 = $("#cK1"), cK2 = $("#cK2");
+[cK1, cK2].forEach(i => i.addEventListener("input", () => { const p = i.selectionStart, n = soNum(i.value); i.value = fmtKm(n); calc(); }));
+$("#cTipo").addEventListener("change", calc); $("#cData").addEventListener("change", calc);
+function calc() {
+  const k1 = +soNum(cK1.value), k2 = +soNum(cK2.value), lim = +$("#cTipo").value, dt = $("#cData").value;
+  const r = $("#cRes"); if (!k1 && !dt) { r.hidden = true; $("#cAg").hidden = true; return; }
+  let pctKm = 0, faltaKm = null, pctT = 0, limData = null;
+  if (k1 && k2 >= k1) { const rod = k2 - k1; faltaKm = lim - rod; pctKm = rod / lim; }
+  if (dt) { const d0 = new Date(dt + "T12:00"); limData = new Date(d0); limData.setMonth(limData.getMonth() + 6); pctT = (Date.now() - d0) / (limData - d0); }
+  const pct = Math.max(pctKm, pctT), venceu = pct >= 1, perto = pct >= .8;
+  r.hidden = false; r.classList.toggle("alerta", venceu);
+  $("#cBar").style.width = Math.min(100, Math.max(3, pct * 100)).toFixed(0) + "%";
+  const partes = [];
+  if (faltaKm != null) partes.push(faltaKm > 0 ? `faltam ${fmtKm(faltaKm)} km` : `passou ${fmtKm(-faltaKm)} km do limite`);
+  if (limData) partes.push((Date.now() < limData ? "até " : "venceu em ") + limData.toLocaleDateString("pt-BR"));
+  $("#cTit").textContent = venceu ? "Passou da hora de trocar" : perto ? "A troca está chegando" : "Óleo em dia";
+  $("#cTx").textContent = partes.length ? partes.join(" ou ").replace(/^./, c => c.toUpperCase()) + "." : "Informe a quilometragem atual.";
+  $("#cAg").hidden = !(venceu || perto);
+}
+$("#cAg").addEventListener("click", () => { sel.add("Troca de óleo do motor"); sel.add("Filtro de óleo"); if (+soNum(cK2.value)) ag.km = soNum(cK2.value); track("calculadora_agendar"); location.hash = "#agendar"; });
+
+/* ═══ Serviços ═══ */
+const sel = new Set();
+const FIL = [["todos", "Todos"], ...GRUPOS.map(g => [g.id, g.nome])];
+let filtro = "todos";
+function servicos() {
+  $("#filtros").innerHTML = FIL.map(([id, n]) => `<button class="fil" type="button" data-f="${id}" aria-pressed="${filtro === id}">${esc(n)}</button>`).join("");
+  $("#grupos").innerHTML = GRUPOS.filter(g => filtro === "todos" || g.id === filtro).map(g => `<section class="grupo" aria-label="${esc(g.nome)}">
+    <div class="gfoto"><img src="${g.foto}" alt="" loading="lazy"><div><span class="mono">${g.itens.length} serviços</span><b>${esc(g.nome)}</b></div></div>
+    ${g.itens.map(s => `<div class="svc"><div class="tx"><b>${esc(s.n)}</b><small>${esc(s.d)}</small>${s.tag ? `<span class="tag">${esc(s.tag)}</span>` : ""}</div>
+      <button class="add" type="button" data-s="${esc(s.n)}" aria-pressed="${sel.has(s.n)}" aria-label="${sel.has(s.n) ? "Remover" : "Adicionar"} ${esc(s.n)}">${ic(sel.has(s.n) ? "ok" : "plus")}</button></div>`).join("")}
+  </section>`).join("");
+  barSel();
+}
+$("#filtros").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (!b) return; filtro = b.dataset.f; servicos(); });
+$("#grupos").addEventListener("click", e => { const b = e.target.closest("[data-s]"); if (!b) return; const n = b.dataset.s; sel.has(n) ? sel.delete(n) : (sel.add(n), track("escolheu_servico", { servico: n })); if (navigator.vibrate) navigator.vibrate(8); servicos(); });
+function barSel() { $("#selN").textContent = sel.size; $("#selBar").hidden = !(sel.size && vista === "servicos"); }
+
+/* ═══ Agendamento ═══ */
+const ag = { tipo: "carro", marca: "", modelo: "", ano: "", placa: "", km: "", comb: "Flex", cambio: "Manual", salvar: true, sintomas: new Set(), obs: "", dia: "", hora: "", espera: "Vou esperar na loja", nome: store.get("tl_nome", ""), fone: store.get("tl_fone", "") };
+let passo = 0;
+const SINT = ["Luz acesa no painel", "Barulho ao frear", "Vazamento", "Carro puxando", "Revisão para viagem", "Não sei o que é"];
+const TIPOS = [["carro", "Carro", "car"], ["moto", "Moto", "moto"], ["pesado", "Caminhão ou van", "truck"]];
+const PASSOS = ["Seu veículo", "Serviços", "Dia e horário", "Seus dados"];
+const anos = (() => { const a = [], y = new Date().getFullYear() + 1; for (let i = y; i >= 1985; i--) a.push(i); return a; })();
+const placaFmt = v => { v = v.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 7); return v; };
+const placaOk = v => /^[A-Z]{3}\d[A-Z0-9]\d{2}$/.test(v);
+const foneFmt = v => { const d = soNum(v).slice(0, 11); if (d.length < 3) return d; if (d.length < 8) return `(${d.slice(0, 2)}) ${d.slice(2)}`; return `(${d.slice(0, 2)}) ${d.slice(2, d.length - 4)}-${d.slice(-4)}`; };
+function diasDisp() {
+  const out = [], n = new Date(); n.setHours(12, 0, 0, 0);
+  for (let k = 0; out.length < 14 && k < 21; k++) { const d = new Date(n); d.setDate(n.getDate() + k); if (!T.expediente[d.getDay()]) continue; if (k === 0 && slots(d).every(s => s.off)) continue; out.push(d); }
+  return out;
+}
+function slots(d) {
+  const sab = d.getDay() === 6, ini = T.expediente[d.getDay()][0], fim = sab ? T.ultimoHorario.sabado : T.ultimoHorario.semana, r = [], agora = new Date();
+  const mesmo = d.toDateString() === agora.toDateString(), hAgora = agora.getHours() + agora.getMinutes() / 60;
+  for (let h = ini; h <= fim; h += .5) r.push({ h: hh(h), off: mesmo && h < hAgora + 1 });
+  return r;
+}
+const iso = d => d.toISOString().slice(0, 10);
+const nomeDia = d => d.toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "2-digit" });
+
+function render() {
+  $$(".passos i").forEach((i, k) => i.classList.toggle("on", k <= passo));
+  $("#pT").textContent = passo < 4 ? PASSOS[passo] : "Confira e envie";
+  $("#pN").textContent = passo < 4 ? `Passo ${passo + 1} de 4` : "Pré-OS";
+  $("#pVolta").hidden = passo === 0; $("#pErro").textContent = "";
+  $("#pVai").innerHTML = passo < 3 ? "Continuar" : passo === 3 ? "Revisar" : ic("wa") + "Enviar no WhatsApp";
+  $("#pVai").className = "bt " + (passo === 4 ? "wa" : "p");
+  const B = $("#pBox");
+  if (passo === 0) {
+    const meus = store.get("tl_veiculos", []);
+    B.innerHTML = `${meus.length ? `<div class="card"><div class="gl">Meus veículos</div><div class="meus">${meus.map((v, i) => `<button class="meu" type="button" data-meu="${i}">${ic(TIPOS.find(t => t[0] === v.tipo)?.[2] || "car")}<span>${esc(v.marca)} ${esc(v.modelo)}</span><b>${esc(v.placa)}</b></button>`).join("")}</div></div>` : ""}
+      <div class="card"><div class="gl">Tipo de veículo</div><div class="seg" id="fTipo">${TIPOS.map(([id, n, i]) => `<button type="button" data-t="${id}" aria-pressed="${ag.tipo === id}">${ic(i)}${n}</button>`).join("")}</div></div>
+      <div class="card"><div class="calc">
+        <label class="campo"><span>Marca</span><select id="fMarca"><option value="">Escolha</option>${MARCAS[ag.tipo].map(m => `<option ${ag.marca === m ? "selected" : ""}>${m}</option>`).join("")}<option ${ag.marca === "Outra" ? "selected" : ""}>Outra</option></select></label>
+        <label class="campo"><span>Ano</span><select id="fAno"><option value="">Ano</option>${anos.map(a => `<option ${+ag.ano === a ? "selected" : ""}>${a}</option>`).join("")}</select></label>
+        <label class="campo full"><span>Modelo e versão</span><input id="fModelo" placeholder="${ag.tipo === "moto" ? "Ex.: CG 160 Fan" : ag.tipo === "pesado" ? "Ex.: Accelo 1016" : "Ex.: Onix 1.0 Turbo"}" value="${esc(ag.modelo)}" autocomplete="off"></label>
+        <label class="campo full"><span>Placa</span><input id="fPlaca" class="placa" placeholder="ABC1D23" maxlength="7" value="${esc(ag.placa)}" autocomplete="off" autocapitalize="characters"></label>
+        <label class="campo"><span>Km atual</span><input id="fKm" inputmode="numeric" placeholder="Ex.: 62.300" value="${fmtKm(ag.km)}"></label>
+        <label class="campo"><span>Combustível</span><select id="fComb">${["Flex", "Gasolina", "Etanol", "Diesel", "Híbrido", "GNV"].map(c => `<option ${ag.comb === c ? "selected" : ""}>${c}</option>`).join("")}</select></label>
+        <div class="campo full"><span>Câmbio</span><div class="seg2" id="fCambio">${["Manual", "Automático", "CVT"].map(c => `<button class="op" type="button" data-c="${c}" aria-pressed="${ag.cambio === c}">${c}</button>`).join("")}</div></div>
+      </div><label class="chk"><input type="checkbox" id="fSalvar" ${ag.salvar ? "checked" : ""}>Lembrar este veículo neste celular</label></div>`;
+    B.querySelectorAll("[data-meu]").forEach(b => b.onclick = () => { Object.assign(ag, meus[+b.dataset.meu]); render(); toast("Veículo carregado."); });
+    $("#fTipo").onclick = e => { const b = e.target.closest("[data-t]"); if (!b) return; guarda(); ag.tipo = b.dataset.t; ag.marca = ""; render(); };
+    $("#fCambio").onclick = e => { const b = e.target.closest("[data-c]"); if (!b) return; ag.cambio = b.dataset.c; B.querySelectorAll("[data-c]").forEach(x => x.setAttribute("aria-pressed", x === b)); };
+    $("#fPlaca").oninput = e => { e.target.value = placaFmt(e.target.value); };
+    $("#fKm").oninput = e => { e.target.value = fmtKm(soNum(e.target.value)); };
+  }
+  if (passo === 1) {
+    B.innerHTML = `<div class="card">${GRUPOS.map(g => `<div class="gl">${esc(g.nome)}</div>${g.itens.map(s => `<button class="ck" type="button" data-s="${esc(s.n)}" aria-pressed="${sel.has(s.n)}"><span class="bx">${ic("ok")}</span><span><b>${esc(s.n)}</b><small>${esc(s.d)}</small></span></button>`).join("")}`).join("")}</div>
+      <div class="card"><div class="gl">Está acontecendo algo?</div><div class="seg2" id="fSint">${SINT.map(s => `<button class="op" type="button" data-x="${esc(s)}" aria-pressed="${ag.sintomas.has(s)}">${esc(s)}</button>`).join("")}</div>
+      <label class="campo full" style="margin-top:.9rem"><span>Conte com suas palavras (opcional)</span><textarea id="fObs" placeholder="Ex.: barulho na roda dianteira quando passo em lombada">${esc(ag.obs)}</textarea></label></div>`;
+    B.querySelectorAll(".ck").forEach(b => b.onclick = () => { const n = b.dataset.s; sel.has(n) ? sel.delete(n) : sel.add(n); b.setAttribute("aria-pressed", sel.has(n)); });
+    $("#fSint").onclick = e => { const b = e.target.closest("[data-x]"); if (!b) return; const s = b.dataset.x; ag.sintomas.has(s) ? ag.sintomas.delete(s) : ag.sintomas.add(s); b.setAttribute("aria-pressed", ag.sintomas.has(s)); };
+  }
+  if (passo === 2) {
+    const ds = diasDisp(); if (!ag.dia || !ds.some(d => iso(d) === ag.dia)) { ag.dia = iso(ds[0]); ag.hora = ""; }
+    const d = ds.find(x => iso(x) === ag.dia);
+    B.innerHTML = `<div class="card"><div class="gl">Escolha o dia</div><div class="dias" id="fDias">${ds.map(x => `<button class="dia" type="button" data-d="${iso(x)}" aria-pressed="${iso(x) === ag.dia}"><small>${x.toLocaleDateString("pt-BR", { weekday: "short" }).replace(".", "")}</small><b>${x.getDate()}</b><small>${x.toLocaleDateString("pt-BR", { month: "short" }).replace(".", "")}</small></button>`).join("")}</div>
+      <div class="gl" style="margin-top:1.1rem">Horários · ${esc(nomeDia(d))}</div><div class="horas" id="fHoras">${slots(d).map(s => `<button class="hora" type="button" data-h="${s.h}" ${s.off ? "disabled" : ""} aria-pressed="${ag.hora === s.h}">${s.h}</button>`).join("")}</div></div>
+      <div class="card"><div class="gl">Enquanto o serviço é feito</div><div class="seg2" id="fEsp">${["Vou esperar na loja", "Vou deixar o veículo"].map(s => `<button class="op" type="button" data-e="${s}" aria-pressed="${ag.espera === s}">${s}</button>`).join("")}</div></div>`;
+    $("#fDias").onclick = e => { const b = e.target.closest("[data-d]"); if (!b) return; ag.dia = b.dataset.d; ag.hora = ""; render(); };
+    $("#fHoras").onclick = e => { const b = e.target.closest("[data-h]"); if (!b || b.disabled) return; ag.hora = b.dataset.h; B.querySelectorAll("[data-h]").forEach(x => x.setAttribute("aria-pressed", x === b)); };
+    $("#fEsp").onclick = e => { const b = e.target.closest("[data-e]"); if (!b) return; ag.espera = b.dataset.e; B.querySelectorAll("[data-e]").forEach(x => x.setAttribute("aria-pressed", x === b)); };
+    const at = B.querySelector('.dia[aria-pressed="true"]'); if (at) at.scrollIntoView({ inline: "center", block: "nearest" });
+  }
+  if (passo === 3) {
+    B.innerHTML = `<div class="card"><div class="calc">
+      <label class="campo full"><span>Seu nome</span><input id="fNome" autocomplete="name" placeholder="Nome e sobrenome" value="${esc(ag.nome)}"></label>
+      <label class="campo full"><span>Seu WhatsApp</span><input id="fFone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(19) 99999-9999" value="${esc(ag.fone)}"></label>
+    </div></div>`;
+    $("#fFone").oninput = e => { e.target.value = foneFmt(e.target.value); };
+  }
+  if (passo === 4) {
+    const d = new Date(ag.dia + "T12:00"), sv = [...sel];
+    B.innerHTML = `<div class="os"><div class="os-h"><b>Pré-OS</b><span>Nº ${protocolo()}</span></div><dl>
+      <dt>Veículo</dt><dd>${esc([ag.marca, ag.modelo, ag.ano].filter(Boolean).join(" "))}</dd>
+      <dt>Placa</dt><dd>${esc(ag.placa)}${ag.km ? " · " + fmtKm(ag.km) + " km" : ""}</dd>
+      <dt>Detalhes</dt><dd>${esc(ag.comb)} · câmbio ${esc(ag.cambio.toLowerCase())}</dd>
+      <dt>Serviços</dt><dd>${sv.length ? sv.map(esc).join("<br>") : "Avaliação do veículo"}</dd>
+      ${ag.sintomas.size || ag.obs ? `<dt>Relato</dt><dd>${esc([...ag.sintomas, ag.obs].filter(Boolean).join(" · "))}</dd>` : ""}
+      <dt>Quando</dt><dd>${esc(nomeDia(d))} às ${esc(ag.hora)}<br><span style="font-weight:500;color:#52525b">${esc(ag.espera)}</span></dd>
+      <dt>Cliente</dt><dd>${esc(ag.nome)}<br>${esc(ag.fone)}</dd></dl>
+      <div class="corte">O horário fica confirmado quando a TecLub responder no WhatsApp. Valores informados no atendimento, conforme o veículo.</div></div>`;
+  }
+}
+let proto = "";
+function protocolo() { if (!proto) { const n = new Date(); proto = "EC" + String(n.getMonth() + 1).padStart(2, "0") + String(n.getDate()).padStart(2, "0") + "-" + Math.random().toString(36).slice(2, 6).toUpperCase(); } return proto; }
+function guarda() {
+  if (passo === 0) { ag.marca = $("#fMarca").value; ag.ano = $("#fAno").value; ag.modelo = $("#fModelo").value.trim(); ag.placa = placaFmt($("#fPlaca").value); ag.km = soNum($("#fKm").value); ag.comb = $("#fComb").value; ag.salvar = $("#fSalvar").checked; }
+  if (passo === 1) ag.obs = $("#fObs").value.trim();
+  if (passo === 3) { ag.nome = $("#fNome").value.trim(); ag.fone = foneFmt($("#fFone").value); }
+}
+function valida() {
+  if (passo === 0) { if (!ag.marca) return "Escolha a marca do veículo."; if (!ag.modelo) return "Informe o modelo do veículo."; if (!placaOk(ag.placa)) return "Confira a placa: 3 letras e 4 caracteres (ex.: ABC1D23 ou ABC1234)."; }
+  if (passo === 1 && !sel.size && !ag.sintomas.size && !ag.obs) return "Escolha pelo menos um serviço ou conte o que está acontecendo.";
+  if (passo === 2 && !ag.hora) return "Escolha um horário.";
+  if (passo === 3) { if (ag.nome.length < 2) return "Informe o seu nome."; if (soNum(ag.fone).length < 10) return "Informe um WhatsApp com DDD."; }
+  return "";
+}
+function mensagem() {
+  const d = new Date(ag.dia + "T12:00"), sv = [...sel];
+  return [`*Agendamento pelo hub · Pré-OS ${protocolo()}*`, "",
+    `*Veículo:* ${[ag.marca, ag.modelo, ag.ano].filter(Boolean).join(" ")}`, `*Placa:* ${ag.placa}${ag.km ? ` · ${fmtKm(ag.km)} km` : ""}`, `*Combustível / câmbio:* ${ag.comb} · ${ag.cambio}`, "",
+    `*Serviços:*`, ...(sv.length ? sv.map(s => `• ${s}`) : ["• Avaliação do veículo"]),
+    ...(ag.sintomas.size || ag.obs ? ["", `*Relato:* ${[...ag.sintomas, ag.obs].filter(Boolean).join(" · ")}`] : []), "",
+    `*Quando:* ${nomeDia(d)} às ${ag.hora} (${ag.espera.toLowerCase()})`, "",
+    `*Cliente:* ${ag.nome} · ${ag.fone}`].join("\n");
+}
+$("#pVai").addEventListener("click", () => {
+  guarda(); const er = valida(); if (er) { $("#pErro").textContent = er; return; }
+  if (passo === 0 && ag.salvar) { const v = { tipo: ag.tipo, marca: ag.marca, modelo: ag.modelo, ano: ag.ano, placa: ag.placa, km: ag.km, comb: ag.comb, cambio: ag.cambio }; const l = store.get("tl_veiculos", []).filter(x => x.placa !== v.placa); l.unshift(v); store.set("tl_veiculos", l.slice(0, 4)); }
+  if (passo === 3) { store.set("tl_nome", ag.nome); store.set("tl_fone", ag.fone); }
+  if (passo < 4) { passo++; render(); scrollTo({ top: 0, behavior: "smooth" }); track("agenda_passo", { passo }); return; }
+  if (!navigator.onLine) { toast("Você está sem conexão. Tente de novo em instantes."); return; }
+  track("confirmou_agendamento", { servicos: [...sel].join(" + "), veiculo: ag.tipo });
+  window.open(wa(mensagem()), "_blank", "noopener");
+});
+$("#pVolta").addEventListener("click", () => { guarda(); if (passo > 0) { passo--; render(); scrollTo({ top: 0, behavior: "smooth" }); } });
+
+/* ═══ Vídeos ═══ */
+$("#vids").innerHTML = VIDEOS.map((v, i) => `<button class="vid" type="button" data-v="${i}"><img src="${v.img}" alt="" loading="lazy"><span class="play">${ic("tri")}</span><b>${esc(v.t)}</b></button>`).join("");
+$("#vids").addEventListener("click", e => { const b = e.target.closest("[data-v]"); if (!b) return; abreVideo(VIDEOS[+b.dataset.v]); });
+function abreVideo(v) {
+  if (!navigator.onLine) { toast("Você está sem conexão. Tente de novo em instantes."); return; }
+  track("viu_video", { video: v.t });
+  $("#folhaT").textContent = v.t;
+  $("#folhaC").innerHTML = `<iframe class="ifr" src="https://www.instagram.com/reel/${v.c}/embed/" title="${esc(v.t)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    <a class="bt s" href="https://www.instagram.com/reel/${v.c}/" target="_blank" rel="noopener noreferrer">${ic("ig")}Abrir no Instagram</a>`;
+  $("#folha").hidden = false; document.body.style.overflow = "hidden"; $("#folhaX").focus();
+}
+function fechaFolha() { $("#folha").hidden = true; $("#folhaC").innerHTML = ""; document.body.style.overflow = ""; }
+$("#folhaX").addEventListener("click", fechaFolha);
+$("#folha").addEventListener("click", e => { if (e.target.id === "folha") fechaFolha(); });
+addEventListener("keydown", e => { if (e.key === "Escape" && !$("#folha").hidden) fechaFolha(); });
+
+/* ═══ Abas (com o botão voltar do celular funcionando) ═══ */
+let vista = "inicio";
+function rota() {
+  const h = (location.hash || "#inicio").slice(1), v = ["inicio", "servicos", "agendar", "videos"].includes(h) ? h : "inicio";
+  if (v !== vista) track("abriu_" + v);
+  vista = v;
+  $$(".vista").forEach(s => s.hidden = s.id !== "v-" + v);
+  $$(".aba").forEach(a => a.dataset.aba === v ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  if (v === "servicos") servicos();
+  if (v === "agendar") render();
+  barSel(); scrollTo(0, 0);
+}
+addEventListener("hashchange", rota); rota();
+})();
+</script>
+</body>
+</html>
