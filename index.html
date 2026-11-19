@@ -194,6 +194,18 @@ p{margin:0}
 
 .aviso{font-size:.85rem;min-height:1.3em}
 
+/* Clientes */
+.clientes{padding:2.2rem 0 .5rem}
+.cli-t{text-align:center;color:var(--mudo);font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.cli{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.9rem;margin-top:1.2rem}
+.cli button{display:flex;align-items:center;gap:.85rem;padding:.85rem 1rem;border-radius:1.1rem;border:1px solid var(--linha);background:var(--painel);color:var(--texto);text-align:left;cursor:pointer;font:inherit;transition:border-color .2s,transform .2s}
+.cli button:hover{border-color:rgba(169,156,255,.5);transform:translateY(-2px)}
+.cli img{width:3.4rem;height:3.4rem;border-radius:50%;object-fit:cover;flex:none;background:#fff;box-shadow:0 0 0 2px var(--c)}
+.cli b{display:block;font-size:.98rem;line-height:1.2}
+.cli small{display:block;color:var(--mudo);font-size:.8rem;margin-top:.15rem}
+@media(max-width:980px){.cli{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.cli{gap:.6rem}.cli button{padding:.7rem;gap:.6rem}.cli img{width:2.7rem;height:2.7rem}.cli b{font-size:.88rem}.cli small{font-size:.72rem}}
+
 /* Comparativo dos planos */
 .comp-t{margin:3rem 0 1rem;font-size:1.25rem}
 .comp{border:1px solid var(--linha);border-radius:1.25rem;overflow:hidden;background:var(--painel)}
@@ -254,7 +266,7 @@ p{margin:0}
   <div class="miolo">
     <a class="marca" href="#inicio" aria-label="Nodus, início"><svg aria-hidden="true"><use href="#logo"/></svg>NODUS</a>
     <nav class="menu" aria-label="Seções">
-      <a href="#como">Como funciona</a><a href="#demos">Demonstrações</a><a href="#placa">Placa Google</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a><a href="#perguntas">Perguntas</a>
+      <a href="#como">Como funciona</a><a href="#demos">Clientes</a><a href="#placa">Placa Google</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a><a href="#perguntas">Perguntas</a>
     </nav>
     <a class="btn btn-p" href="#comprar">Fazer pedido</a>
   </div>
@@ -267,7 +279,7 @@ p{margin:0}
         <h1>Aproximou o celular.<span>Abriu o seu negócio.</span></h1>
         <p class="lead">A Nodus cria hubs digitais com NFC para o balcão e a mesa: cardápio, agendamento, WhatsApp, Instagram, Wi-Fi e avaliação no Google em uma página só. O cliente não baixa nada.</p>
         <div class="acoes">
-          <a class="btn btn-p" href="#demos">Testar as demonstrações</a>
+          <a class="btn btn-p" href="#demos">Ver hubs de clientes</a>
           <a class="btn btn-s" href="#planos">Ver planos</a>
         </div>
         <div class="nichos" aria-label="Para quem é"><span>Restaurantes</span><span>Bares</span><span>Barbearias</span><span>Oficinas</span><span>Lojas de roupa</span><span>Cafés</span></div>
@@ -280,6 +292,13 @@ p{margin:0}
         <div class="ondas" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="cel"><div class="tela"><iframe src="demos/tijuca.html?mesa=08" title="Hub do Boteco Tijuca, cliente Nodus" loading="eager"></iframe></div></div>
       </div>
+    </div>
+  </section>
+
+  <section class="clientes faixa" aria-labelledby="cliT">
+    <div class="miolo">
+      <p class="cli-t" id="cliT">Negócios que já atendem com a Nodus</p>
+      <div class="cli" id="cli"></div>
     </div>
   </section>
 
@@ -296,7 +315,7 @@ p{margin:0}
 
   <section class="sec faixa demo" id="demos">
     <div class="miolo">
-      <div class="sec-h"><span class="rot">Demonstrações</span><h2>Teste um hub como se fosse o seu cliente</h2><p>Escolha um tipo de negócio. O celular abaixo funciona de verdade: toque, navegue e faça um agendamento de teste.</p></div>
+      <div class="sec-h"><span class="rot">Hubs no ar</span><h2>Teste como se fosse o seu cliente</h2><p>Todos estes hubs são de clientes da Nodus e estão funcionando agora. O celular abaixo é de verdade: toque, navegue e faça um agendamento de teste.</p></div>
       <div class="abas" role="tablist" id="abas"></div>
       <div class="demo-grid">
         <div class="cel"><div class="tela"><iframe id="demoFrame" title="Demonstração do hub" loading="lazy"></iframe></div></div>
@@ -403,7 +422,7 @@ p{margin:0}
 <footer class="rodape faixa">
   <div class="miolo">
     <a class="marca" href="#inicio"><svg aria-hidden="true"><use href="#logo"/></svg>NODUS</a>
-    <nav aria-label="Rodapé"><a href="#demos">Demonstrações</a><a href="#placa">Placa Google</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a><a href="#perguntas">Perguntas</a></nav>
+    <nav aria-label="Rodapé"><a href="#demos">Clientes</a><a href="#placa">Placa Google</a><a href="#planos">Planos</a><a href="#comprar">Comprar</a><a href="#perguntas">Perguntas</a></nav>
     <span>© 2026 Nodus · Hubs digitais com NFC</span>
   </div>
 </footer>
@@ -462,19 +481,16 @@ const PLACA_CORES = [
   { id: "preto", nome: "Preto", cor: "#2b2d31", fundo: "linear-gradient(160deg,#20242c,#08090c)", foto: "img/placa-preta.jpg" },
 ];
 const DEMOS = [
-  { id: "jhows", nome: "Barbearias", cor: "#e0312e", arquivo: "demos/jhows.html", titulo: "Jhow's Barbearia", real: true,
+  { id: "teclub", nome: "Oficinas", cor: "#e3131b", arquivo: "demos/teclub.html", titulo: "TecLub Eng. Coelho", cidade: "Engenheiro Coelho", logo: "img/clientes/teclub.jpg",
+    texto: "Hub completo da TecLub, da Rede Tec-Lub 4 Irmãos. O motorista vê os serviços, cadastra o carro (modelo, placa, km e câmbio), escolhe o dia e o horário e manda uma pré-ordem de serviço pronta no WhatsApp da oficina.",
+    itens: ["Agendamento com cadastro do veículo", "Pré-ordem de serviço enviada no WhatsApp", "Calculadora da próxima troca de óleo", "Vídeos da oficina direto do Instagram"] },
+  { id: "jhows", nome: "Barbearias", cor: "#f5f5f5", arquivo: "demos/jhows.html", titulo: "Jhow's Barbearia", cidade: "Engenheiro Coelho", logo: "img/clientes/jhows.jpg",
     texto: "Hub da Jhow's, no UNASP em Engenheiro Coelho. O cliente escolhe o serviço, o barbeiro (Jhow's, Quaresma, Nicolas ou Deivid), o dia e o horário, e a confirmação chega pronta no WhatsApp com o valor.",
     itens: ["Serviços com preço e tempo reais", "Agenda por barbeiro, respeitando o horário da casa", "Planos do Clube com botão de assinar", "Logo e foto da equipe na capa, em visual street"] },
-  { id: "tijuca", nome: "Bares", cor: "#d4571a", arquivo: "demos/tijuca.html?mesa=08", titulo: "Boteco Tijuca", real: true,
+  { id: "tijuca", nome: "Bares", cor: "#d4571a", arquivo: "demos/tijuca.html?mesa=08", titulo: "Boteco Tijuca", cidade: "Mogi Guaçu", logo: "img/clientes/tijuca.jpg",
     texto: "Hub de mesa do Boteco Tijuca, em Mogi Guaçu. O cliente encosta o celular na plaquinha da mesa 08 e já vê o cardápio em vídeo, o Wi-Fi e o Instagram. Os vídeos do cardápio de demonstração foram cedidos pelo Backyard, de Juiz de Fora.",
     itens: ["Cardápio em vídeo: cada prato como ele chega na mesa", "Mesa identificada pela plaquinha", "Wi-Fi com senha para copiar", "Avaliação no Google na hora da conta"] },
-  { id: "restaurante", nome: "Restaurantes", cor: "#d9502f", arquivo: "demos/restaurante.html?mesa=12", titulo: "Cantina Bella Nonna",
-    texto: "Na mesa 12, o cliente abre o cardápio da cantina, monta o pedido e envia no WhatsApp com o número da mesa e o total.",
-    itens: ["Cardápio por categorias com preços", "Carrinho e pedido pelo WhatsApp", "Mesa identificada pela plaquinha", "Wi-Fi e endereço na mesma página"] },
-  { id: "oficina", nome: "Oficinas", cor: "#F59E0B", arquivo: "demos/oficina.html", titulo: "Garage 77 Auto Center",
-    texto: "Revisão, troca de óleo ou alinhamento: o motorista agenda sozinho e informa o carro antes de chegar.",
-    itens: ["Catálogo de serviços com tempo médio", "Vários serviços no mesmo agendamento", "Modelo e placa do carro na mensagem", "Orçamento rápido pelo WhatsApp"] },
-  { id: "atelie", nome: "Lojas de roupa", cor: "#e3343b", arquivo: "demos/atelie.html", titulo: "Ateliê da Moda", real: true,
+  { id: "atelie", nome: "Lojas de roupa", cor: "#e3343b", arquivo: "demos/atelie.html", titulo: "Ateliê da Moda", cidade: "Mogi Guaçu", logo: "img/clientes/atelie.jpg",
     texto: "Hub do Ateliê da Moda, em Mogi Guaçu, há 20 anos vestindo mulheres reais do 36 ao 52. A cliente encosta o celular e já cai no WhatsApp da loja, no Instagram, no grupo VIP ou na avaliação do Google.",
     itens: ["Compra pelo WhatsApp com mensagem pronta", "Grupo VIP de promoções em um toque", "Avaliação direto no perfil do Google", "Status de aberto ou fechado pelo horário da loja"] },
 ];
@@ -544,7 +560,7 @@ const DEMOS = [
     frame.title = "Demonstração: " + d.titulo;
     info.style.setProperty("--c", d.cor);
     info.innerHTML = `
-      <span class="tipo">${esc(d.nome)}${d.real ? " · cliente real" : ""}</span>
+      <span class="tipo">${esc(d.nome)} · ${esc(d.cidade)}</span>
       <h3>${esc(d.titulo)}</h3>
       <p>${esc(d.texto)}</p>
       <ul class="lista">${d.itens.map(t => `<li><svg aria-hidden="true"><use href="#ok"/></svg><span>${esc(t)}</span></li>`).join("")}</ul>
@@ -552,9 +568,11 @@ const DEMOS = [
         <a class="btn btn-p" href="#comprar">Quero um hub assim</a>
         <a class="btn btn-s" href="${d.arquivo}" target="_blank" rel="noopener">Abrir em tela cheia</a>
       </div>
-      <p class="dica">${d.real ? "Cliente Nodus. Hub real, publicado com autorização do dono." : "Negócio fictício, criado para demonstração. Os botões de contato são de exemplo."}</p>`;
+      <p class="dica">Cliente Nodus. Hub real, publicado com autorização do dono.</p>`;
   }
   abas.addEventListener("click", e => { const b = e.target.closest(".aba"); if (b) mostrar(+b.dataset.i); });
+  $("#cli").innerHTML = DEMOS.map((d, i) => `<button type="button" data-i="${i}" style="--c:${d.cor}"><img src="${d.logo}" alt="" width="54" height="54" loading="lazy"><span><b>${esc(d.titulo)}</b><small>${esc(d.nome)} · ${esc(d.cidade)}</small></span></button>`).join("");
+  $("#cli").addEventListener("click", e => { const b = e.target.closest("[data-i]"); if (!b) return; mostrar(+b.dataset.i); $("#demos").scrollIntoView({ behavior: "smooth" }); });
   abas.addEventListener("keydown", e => {
     if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
     const atual = [...abas.children].findIndex(b => b.getAttribute("aria-selected") === "true");

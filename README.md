@@ -6,19 +6,21 @@ O cliente aproxima o celular de uma placa NFC no balcão ou na mesa e abre uma p
 
 ![Site da Nodus](docs/site.jpg)
 
-## Hubs
+## Clientes
 
-| Boteco Tijuca (cliente) | Cardápio em vídeo | Jhow's Barbearia (cliente) | Agendamento |
+| TecLub Eng. Coelho | Agendamento com cadastro do veículo | Jhow's Barbearia | Agendamento |
 |---|---|---|---|
-| ![](docs/tijuca.jpg) | ![](docs/tijuca-cardapio.jpg) | ![](docs/jhows.jpg) | ![](docs/jhows-agenda.jpg) |
+| ![](docs/teclub.jpg) | ![](docs/teclub-agenda.jpg) | ![](docs/jhows.jpg) | ![](docs/jhows-agenda.jpg) |
 
-| Restaurante (demo) | Oficina (demo) | Loja de roupas (demo) |
+| Boteco Tijuca | Cardápio em vídeo | Ateliê da Moda |
 |---|---|---|
-| ![](docs/restaurante.jpg) | ![](docs/oficina.jpg) | ![](docs/loja.jpg) |
+| ![](docs/tijuca.jpg) | ![](docs/tijuca-cardapio.jpg) | ![](docs/atelie.jpg) |
 
-Abrir direto: [Ateliê da Moda](https://arthurfuturedev.github.io/nodus/demos/atelie.html) · [Tijuca](https://arthurfuturedev.github.io/nodus/demos/tijuca.html?mesa=08) · [Jhow's](https://arthurfuturedev.github.io/nodus/demos/jhows.html) · [Cantina Bella Nonna](https://arthurfuturedev.github.io/nodus/demos/restaurante.html?mesa=12) · [Garage 77](https://arthurfuturedev.github.io/nodus/demos/oficina.html) · [Ateliê Lis](https://arthurfuturedev.github.io/nodus/demos/loja.html)
+Abrir direto: [TecLub](https://arthurfuturedev.github.io/nodus/demos/teclub.html) · [Jhow's](https://arthurfuturedev.github.io/nodus/demos/jhows.html) · [Tijuca](https://arthurfuturedev.github.io/nodus/demos/tijuca.html?mesa=08) · [Ateliê da Moda](https://arthurfuturedev.github.io/nodus/demos/atelie.html)
 
-O Boteco Tijuca, a Jhow's Barbearia e o Ateliê da Moda são clientes reais e o uso foi autorizado por eles. Os vídeos do cardápio do Tijuca foram cedidos pelo restaurante Backyard para demonstração. As demais empresas são fictícias.
+Todos são clientes reais, publicados com autorização. Os vídeos do cardápio do Tijuca foram cedidos pelo restaurante Backyard para demonstração.
+
+Demonstrações de estudo (empresas fictícias, fora do site): [restaurante com carrinho](https://arthurfuturedev.github.io/nodus/demos/restaurante.html?mesa=12) · [oficina](https://arthurfuturedev.github.io/nodus/demos/oficina.html) · [loja com catálogo](https://arthurfuturedev.github.io/nodus/demos/loja.html)
 
 ## O que cada hub faz
 
@@ -29,6 +31,7 @@ O Boteco Tijuca, a Jhow's Barbearia e o Ateliê da Moda são clientes reais e o 
 - **Wi‑Fi:** mostra a rede e copia a senha com um toque.
 - **Clube de assinatura:** planos mensais com botão para assinar.
 - **Relatório de acessos:** registra aberturas por NFC ou QR code (`?o=nfc` / `?o=qr`), mesa, cliques em cada botão, vídeos vistos, pedidos e agendamentos, via Google Analytics 4 ou Umami. Nenhum dado pessoal é coletado.
+- **Hub sob medida:** a TecLub tem um hub próprio (`hub/clientes/teclub/`) com abas de serviços, agendamento em 4 passos com cadastro do veículo e pré-ordem de serviço, calculadora da próxima troca de óleo e vídeos do Instagram.
 - **Funciona em qualquer celular:** sem dependências, um único arquivo HTML com imagens embutidas e aviso de falta de conexão.
 
 ## Site de vendas
