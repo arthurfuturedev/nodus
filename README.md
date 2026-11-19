@@ -16,9 +16,9 @@ O cliente aproxima o celular de uma placa NFC no balcão ou na mesa e abre uma p
 |---|---|---|
 | ![](docs/restaurante.jpg) | ![](docs/oficina.jpg) | ![](docs/loja.jpg) |
 
-Abrir direto: [Tijuca](https://arthurfuturedev.github.io/nodus/demos/tijuca.html?mesa=08) · [Jhow's](https://arthurfuturedev.github.io/nodus/demos/jhows.html) · [Cantina Bella Nonna](https://arthurfuturedev.github.io/nodus/demos/restaurante.html?mesa=12) · [Garage 77](https://arthurfuturedev.github.io/nodus/demos/oficina.html) · [Ateliê Lis](https://arthurfuturedev.github.io/nodus/demos/loja.html)
+Abrir direto: [Ateliê da Moda](https://arthurfuturedev.github.io/nodus/demos/atelie.html) · [Tijuca](https://arthurfuturedev.github.io/nodus/demos/tijuca.html?mesa=08) · [Jhow's](https://arthurfuturedev.github.io/nodus/demos/jhows.html) · [Cantina Bella Nonna](https://arthurfuturedev.github.io/nodus/demos/restaurante.html?mesa=12) · [Garage 77](https://arthurfuturedev.github.io/nodus/demos/oficina.html) · [Ateliê Lis](https://arthurfuturedev.github.io/nodus/demos/loja.html)
 
-O Boteco Tijuca e a Jhow's Barbearia são clientes reais e o uso foi autorizado por eles. Os vídeos do cardápio do Tijuca foram cedidos pelo restaurante Backyard para demonstração. As demais empresas são fictícias.
+O Boteco Tijuca, a Jhow's Barbearia e o Ateliê da Moda são clientes reais e o uso foi autorizado por eles. Os vídeos do cardápio do Tijuca foram cedidos pelo restaurante Backyard para demonstração. As demais empresas são fictícias.
 
 ## O que cada hub faz
 
@@ -46,7 +46,7 @@ O Boteco Tijuca e a Jhow's Barbearia são clientes reais e o uso foi autorizado 
 
 ```
 index.html        site de vendas (página única, sem dependências)
-demos/            hubs gerados: 2 clientes reais e 3 demonstrações
+demos/            hubs gerados: clientes reais e demonstrações
 hub/
   base.html       motor do hub (HTML, CSS e JavaScript puros)
   gerar.py        configuração dos clientes reais e geração dos arquivos
